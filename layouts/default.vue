@@ -1,8 +1,44 @@
 <template>
   <div>
+    <div class="v-navigation-drawer">
+      <ul class="v-list">
+        <li v-for="(item, i) in items" :key="i" class="tile">
+          <router-link class="content" :to="item.to" router exact>
+            <i>{{ item.icon }}</i>
+            <h5 v-text="item.title" />
+          </router-link>
+        </li>
+      </ul>
+    </div>
     <nuxt />
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      items: [
+        {
+          icon: 'apps',
+          title: 'Home',
+          to: '/'
+        },
+        {
+          icon: 'bubble_chart',
+          title: 'Portfolio',
+          to: '/projects'
+        },
+        {
+          icon: 'bubble_chart',
+          title: 'Contact',
+          to: '/contact'
+        }
+      ]
+    }
+  }
+}
+</script>
 
 <style>
 html {
