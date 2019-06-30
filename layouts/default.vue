@@ -1,12 +1,28 @@
 <template>
   <div>
-    <div class="v-navigation-drawer">
-      <ul class="v-list">
-        <li v-for="(item, i) in items" :key="i" class="tile">
-          <router-link class="content" :to="item.to" router exact>
-            <i class="fa">{{ item.icon }}</i>
-            <h5 v-text="item.title" />
+    <div class="navigation-drawer">
+      <ul class="nav-menu flex-row left">
+        <li
+          v-for="(item, i) in items"
+          :key="i"
+          :class="{ active: $route.path == item.to }"
+          class="nav-item"
+        >
+          <router-link class="flex-row left" :to="item.to" router>
+            <i class="material-icons">{{ item.icon }}</i>
+            <span class="uc menu-title" v-text="item.title" />
           </router-link>
+        </li>
+        <li class="flex-spacer" />
+        <li class="file-item uc">
+          <a
+            href="./ErikOlsen_Resume.pdf"
+            target="_blank"
+            class="flex-row left"
+          >
+            <i class="material-icons">picture_as_pdf</i>
+            <span class="uc menu-title">Resume</span>
+          </a>
         </li>
       </ul>
     </div>
@@ -20,17 +36,17 @@ export default {
     return {
       items: [
         {
-          icon: 'apps',
-          title: 'Home',
+          icon: 'home',
+          title: 'EO',
           to: '/'
         },
         {
-          icon: 'bubble_chart',
-          title: 'Portfolio',
+          icon: 'work',
+          title: 'Projects',
           to: '/projects'
         },
         {
-          icon: 'bubble_chart',
+          icon: 'mail_outline',
           title: 'Contact',
           to: '/contact'
         }
@@ -39,53 +55,23 @@ export default {
   }
 }
 </script>
-
-<style>
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+<style lang="scss">
+.nav-item,
+.file-item {
+  padding: 5px 10px;
+  .menu-title {
+    display: initial;
+  }
+  .material-icons {
+    display: none;
+  }
+  @media (max-width: 767px) {
+    .menu-title {
+      display: none;
+    }
+    .material-icons {
+      display: initial;
+    }
+  }
 }
 </style>

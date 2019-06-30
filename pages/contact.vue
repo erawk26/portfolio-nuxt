@@ -1,12 +1,12 @@
 <template>
-  <div class="container">
-    <div>
+  <section class="contact">
+    <div class="wrapper flex col">
       <logo />
       <h1 class="title">
         Contact
       </h1>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -18,36 +18,107 @@ export default {
   }
 }
 </script>
-
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+<style lang="scss">
+//////////////// Contact ////////////////
+section.contact {
+  .form-container {
+    height: 100%;
+    @include flex(flex-start, flex-start, $direction: column);
+  }
 }
+/* Obnoxious styling for icon fonts */
+.contact .fa {
+  transition: all 0.5s ease;
+  color: $dk-grey;
+  //border:1px solid transparent;
+  border: none;
+  &.fa-envelope-o {
+    //color: rgb(201, 44, 25);
+    &:hover {
+      //color: white;
+      color: rgb(201, 44, 25);
+      border-color: rgb(201, 44, 25);
+    }
+  }
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
+  &.fa-phone {
+    //color: green;
+    &:hover {
+      color: green;
+      border-color: green;
+    }
+  }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
+  &.fa-twitter {
+    //color: #4099FF;
+    &:hover {
+      //color: white;
+      color: #4099ff;
+      border-color: #4099ff;
+    }
+  }
 
-.links {
-  padding-top: 15px;
+  &.fa-linkedin {
+    //color: #0077b5;
+    &:hover {
+      //color: white;
+      color: #0077b5;
+      border-color: #0077b5;
+    }
+  }
+
+  &.fa-drupal {
+    //color: #0678bf;
+    &:hover {
+      //color: white;
+      color: #0678bf;
+      border-color: #0678bf;
+    }
+  }
+
+  &.fa-github {
+    //color: #333;
+    &:hover {
+      //color: white;
+      color: #333;
+      border-color: #333;
+    }
+  }
+
+  &.fa-codepen {
+    //color: black;
+    &:hover {
+      //color: white;
+      color: black;
+      border-color: black;
+    }
+  }
+
+  &.fa-stack-overflow {
+    //color: #07c;
+    &:hover {
+      //color: white;
+      color: #07c;
+      border-color: #07c;
+    }
+  }
+
+  &.fa-dribbble {
+    //color: #ea4c89;
+    &:hover {
+      //color: white;
+      color: #ea4c89;
+      border-color: #ea4c89;
+    }
+  }
+
+  &.fa-fire {
+    //color: #4b2a10;
+    &:hover {
+      //color: white;
+      color: #4b2a10;
+      border-color: #4b2a10;
+    }
+  }
 }
 </style>

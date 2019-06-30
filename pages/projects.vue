@@ -1,12 +1,12 @@
 <template>
-  <div class="container">
-    <div>
+  <section class="projects">
+    <div class="wrapper flex col">
       <logo />
       <h1 class="title">
         Projects
       </h1>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -20,15 +20,6 @@ export default {
 </script>
 
 <style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
 .title {
   font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
