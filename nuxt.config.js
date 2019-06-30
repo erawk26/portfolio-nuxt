@@ -14,7 +14,19 @@ export default {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css'
+      },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://fonts.googleapis.com/css?family=Work+Sans:500|Material+Icons'
+      }
+    ]
   },
   /*
    ** Customize the progress-bar color
@@ -31,9 +43,17 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: ['@nuxtjs/eslint-module', '@nuxtjs/google-analytics'],
+  modules: [
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/google-analytics',
+    '@nuxtjs/style-resources'
+  ],
   googleAnalytics: {
     id: 'UA-115116018-1'
+  },
+  styleResources: {
+    // your settings here
+    sass: ['~assets/scss/style.scss'] // alternative: scss
   },
   /*
    ** Build configuration

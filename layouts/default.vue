@@ -4,7 +4,7 @@
       <ul class="v-list">
         <li v-for="(item, i) in items" :key="i" class="tile">
           <router-link class="content" :to="item.to" router exact>
-            <i>{{ item.icon }}</i>
+            <i class="fa">{{ item.icon }}</i>
             <h5 v-text="item.title" />
           </router-link>
         </li>
