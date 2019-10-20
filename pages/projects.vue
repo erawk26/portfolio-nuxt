@@ -1,6 +1,6 @@
 <template>
   <section class="projects">
-    <div class="wrapper flex col">
+    <div class="wrapper flex col center">
       <logo />
       <h1 class="title">
         Projects

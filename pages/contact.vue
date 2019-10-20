@@ -1,6 +1,6 @@
 <template>
   <section class="contact">
-    <div class="wrapper flex col">
+    <div class="wrapper flex col center">
       <logo />
       <h1 class="title">
         Contact
@@ -23,13 +23,16 @@ export default {
 section.contact {
   .form-container {
     height: 100%;
-    @include flex(flex-start, flex-start, $direction: column);
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
 /* Obnoxious styling for icon fonts */
 .contact .fa {
   transition: all 0.5s ease;
-  color: $dk-grey;
+  color: $dk-gray;
   //border:1px solid transparent;
   border: none;
   &.fa-envelope-o {

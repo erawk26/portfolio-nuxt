@@ -23,7 +23,7 @@ form {
     }
   }
   font-size: 14px;
-  @media (min-width: $bp1) {
+  @media (min-width: $bp-sm) {
     font-size: 18px;
   }
   color: $blue;
@@ -86,12 +86,12 @@ form {
       outline: none;
     }
     &[disabled] {
-      background: shade($grey, 20);
+      background: shade($gray, 20);
     }
   }
   input[type="checkbox"],
   input[type="radio"] {
-    // box-shadow: 0 0 0 0 shade($grey, 15);
+    // box-shadow: 0 0 0 0 shade($gray, 15);
   }
   button[type="submit"] {
     border: 2px solid black;

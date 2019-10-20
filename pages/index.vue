@@ -1,10 +1,10 @@
 <template lang="pug">
   section.intro
     //- logo
-    .wrapper.flex.col
+    .wrapper.flex.col.center
       img.add-bottom.headshot(src='/img/headshot2.jpg', alt="Erik Olsen")
       p I'm Erik Olsen, a Web Developer currently based out of Sarasota, FL. I build fast responsive websites and applications.
-      router-link.material-icons.next.add-top(to="/projects") expand_more
+      router-link.material-icons.next.add-top.unstyle(to="/projects") expand_more
 </template>
 
 <script>
@@ -28,6 +28,7 @@ section.intro {
     /* // @include flex($direction: column); */
     line-height: 2;
     p {
+      font-family: $fontBody;
       max-width: 700px;
       margin: 0 auto;
     }

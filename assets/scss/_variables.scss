@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville|Yanone+Kaffeesatz');
 // @import url('https://fonts.googleapis.com/css?family=Montserrat');
+
 // Responsive breakpoints
+$mobile-breakpoint: 480px;
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 960px;
+$page-max-width: 1080px;
 
 $bp-xs: $mobile-breakpoint;
 $bp-sm: $tablet-breakpoint;
@@ -13,32 +18,80 @@ $bp-sm-max: ($bp-sm - 1);
 $bp-md-max: ($bp-md - 1);
 $bp-lg-max: ($bp-lg - 1);
 
-$mq-xs: 'screen and (min-width: '#{$bp-xs}')';
-$mq-sm: 'screen and (min-width: '#{$bp-sm}')';
-$mq-md: 'screen and (min-width: '#{$bp-md}')';
-$mq-lg: 'screen and (min-width: '#{$bp-lg}')';
-$mq-mw: 'screen and (min-width: '#{$bp-mw}')';
+$mq-xs: 'screen and (min-width: '$bp-xs')';
+$mq-sm: 'screen and (min-width: '$bp-sm')';
+$mq-md: 'screen and (min-width: '$bp-md')';
+$mq-lg: 'screen and (min-width: '$bp-lg')';
+$mq-mw: 'screen and (min-width: '$bp-mw')';
+
+// Colors ///////////////
+$brown:#a67040;
+$orange: #f47920;
+$red: #e74c3c;
+$dk-red: #c12c25;
+$purp: #aa3655;
+$burg: #5b2d3c;
+$blue: #027eb1;
+$light-blue: #49a2c7;
+$aqua: #02c7c6;
+$green: #1fb16d;
+$dk-green:rgb(59, 128, 112);
+$white: #fff;
+$white1: rgb(243, 243, 243);
+$white2: rgb(237, 237, 237);
+$off-white: #efefef;
+$lt-gray: #ccc;
+$gray: #999;
+$dk-gray: #494140;
+$black: #000;
+
+//Fire Theme
+$fire1: rgba(70, 137, 102, 1);
+$fire2: rgba(255, 239, 165, 1);
+$fire3: rgba(255, 175, 59, 1);
+$fire4: rgba(182, 73, 38, 1);
+$fire5: rgba(142, 40, 0, 1);
+
+// Utility color variables ///////////////
+$primary: $white;
+$secondary: $black;
+$tertiary: $dk-gray;
+$quadrary: $green;
+$quinary: $burg;
+
+$link-color-normal: $black;
+$link: $link-color-normal;
+$link-color-active: $dk-green;
+$heading-font-color: $dk-gray;
+$heading-alt-color: $burg;
+$base-font-color: $dk-gray;
+
+// bg gradients
+$trans-right: linear-gradient(
+  90deg,
+  rgba($lt-gray, 1) 45%,
+  rgba($lt-gray, 0) 100%
+);
+$trans-left: linear-gradient(270deg, rgba($lt-gray, 1) 45%, rgba($lt-gray, 0))
+  100%;
+$trans-down: linear-gradient(
+    0deg,
+    rgba($lt-gray, 1) 10%,
+    rgba($lt-gray, 0.75) 30%,
+    rgba($lt-gray, 0.3)
+  )
+  100%;
 
 $bdr: 2px dotted red; //layout debugging (dev only)
 $br1: 10px;
 $br2: 4px;
 $br3: 6px;
 
-// Font Weights //////////
-$light: 300;
-$regular: 400;
-$normal: $regular;
-$medium-b: 500;
-$med: $medium-b;
-$semibold: 600;
-$bold: 700;
-$extrabold: 800;
-
 $serif-stack: '"Georgia", "Times", "Times New Roman", serif';
 $sans-serif-stack: '"Helvetica Neue", "Helvetica", "Arial", sans-serif';
 $yanone-font: 'Yanone Kaffeesatz', #{$sans-serif-stack};
-$roboto-font: 'Roboto', #{$sans-serif-stack};
-$monserrat-font: 'Montserrat', #{$sans-serif-stack};
+// $roboto-font: 'Roboto', #{$sans-serif-stack};
+// $monserrat-font: 'Montserrat', #{$sans-serif-stack};
 $libre-font: 'Libre Baskerville', #{$serif-stack};
 
 // Base Font
@@ -53,16 +106,77 @@ $inherit: inherit;
 $fixed-font-family: monospace;
 $fixed-font-size: 85%;
 $fixed-line-height: $base-line-height;
-// Headings
-$header-font-weight: $bold;
-//
 
-$workSans: 'Work Sans', sans-serif;
-$fontSrcSans: 'Source Sans Pro', sans-serif;
-$fontCagli: 'Cagliostro', cursive;
-$fontBody: $workSans;
-$fontHead: $workSans;
+// $workSans: 'Work Sans', sans-serif;
+// $fontSrcSans: 'Source Sans Pro', sans-serif;
+// $fontCagli: 'Cagliostro', cursive;
+$fontBody: $body-font-family;
+$fontHead: $heading-font-family;
+$fontHead2: $heading-alt-family;
 $fontIcon: 'FontAwesome';
+
+// Font Weights //////////
+$light: 300;
+$regular: 400;
+$normal: $regular;
+$medium-b: 500;
+$med: $medium-b;
+$semibold: 600;
+$bold: 700;
+$extrabold: 800;
+
+// H1
+$h1-size: 7rem;
+$h1-line-height: 7.5rem;//1.08;//75px;
+$h1-color: $heading-font-color;
+$h1-family: $heading-font-family;
+$h1-margin: 5rem 0 3rem;
+$h1-weight: $medium-b;
+
+// H2
+$h2-size: 2.4rem;
+$h2-line-height: 2.9rem;//1.2;//29px;
+$h2-color: $heading-font-color;
+$h2-margin: 3rem 0 0.5rem;
+$h2-family: $body-font-family;
+$h2-weight: $medium-b;
+
+// H3
+$h3-size: 3.2rem;
+$h3-color: $heading-font-color;
+$h3-family: $heading-font-family;
+$h3-line-height: 3.6rem;//1.125;//36px
+$h3-line-height-small: 3.2rem;//32px
+$h3-margin: 3rem 0 0.5rem;
+$h3-weight: $semibold;
+
+// H4
+$h4-size: 2.8rem;
+$h4-color: $heading-font-color;
+$h4-family: $heading-font-family;
+$h4-line-height: 3.2rem;//1.14;//32px
+$h4-margin: 3rem 0 0.5rem;
+$h4-weight: $semibold;
+
+// H5
+$h5-size: 2.4rem;
+$h5-color: $heading-font-color;
+$h5-family: $heading-font-family;
+$h5-line-height: 2.8rem;//1.16;//28px
+$h5-margin: 3rem 0 0.5rem;
+$h5-weight: $semibold;
+
+// H6
+$h6-size: 1.8rem;
+$h6-color: $heading-alt-color;
+$h6-family: $heading-font-family;
+$h6-line-height: 2.4rem;//1.33;//24px
+$h6-margin: 0;
+$h6-weight: $bold;
+
+//animations
+$base-duration:300ms;
+$base-timing:ease;
 
 // SVG Variables
 $fb: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42.115 42.115"><defs><style>.a{fill:none;}.a,.b{fill-rule:evenodd;}.b{fill:#fff;}</style></defs><path class="a" d="M0,0H42.114V42.114H0Z"/><path class="b" d="M22.355,17.793H20.25a.7.7,0,0,1-.7-.7V16.038a5.264,5.264,0,0,1,5.264-5.264H27.62a.7.7,0,0,1,.7.7v2.106a.7.7,0,0,1-.7.7H24.812a1.755,1.755,0,0,0-1.755,1.755v1.053a.7.7,0,0,1-.7.7ZM19.548,33.586V23.057H16.74a.7.7,0,0,1-.7-.7V20.25a.7.7,0,0,1,.7-.7H27.62a.7.7,0,0,1,.7.7v2.106a.7.7,0,0,1-.7.7H23.057V33.586h3.51a7.019,7.019,0,0,0,7.019-7.019V12.529A7.019,7.019,0,0,0,26.567,5.51H12.529A7.019,7.019,0,0,0,5.51,12.529V26.567a7.019,7.019,0,0,0,7.019,7.019ZM12.529,2H26.567A10.529,10.529,0,0,1,37.1,12.529V26.567A10.529,10.529,0,0,1,26.567,37.1H12.529A10.529,10.529,0,0,1,2,26.567V12.529A10.529,10.529,0,0,1,12.529,2Z" transform="translate(1.51 1.51)"/></svg>';

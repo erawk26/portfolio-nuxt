@@ -34,11 +34,11 @@
 }
 
 @mixin default-transition(
-  $base-name: all,
-  $base-duration: 300ms,
-  $base-timing: ease
+  $name: all,
+  $duration: $base-duration,
+  $timing: $base-timing
 ) {
-  transition: $base-name $base-duration $base-timing;
+  transition: $name $duration $timing;
 }
 
 /**
@@ -211,18 +211,19 @@
   }
 }
 
-@mixin textLink($color, $hoverColor) {
+@mixin textLink($color:$link-color-normal, $hoverColor:$link-color-active) {
   @include default-transition;
   color: $color;
-
+  border-bottom-color: $color;
   &:visited {
     color: $color;
   }
-
   &:hover,
   &:focus,
-  &:active {
+  &:active,
+  .active {
     color: $hoverColor;
+    border-bottom-color: $hoverColor;
   }
 }
 
