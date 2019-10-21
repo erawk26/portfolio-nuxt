@@ -211,7 +211,7 @@
   }
 }
 
-@mixin textLink($color:$link-color-normal, $hoverColor:$link-color-active) {
+@mixin textLink($color: $link-color-normal, $hoverColor: $link-color-active) {
   @include default-transition;
   color: $color;
   border-bottom-color: $color;
@@ -262,6 +262,11 @@
 
 @mixin desktop {
   @media (min-width: #{$tablet-breakpoint}) {
+    @content;
+  }
+}
+@mixin not-desktop {
+  @media (max-width: #{$tablet-breakpoint} - 1) {
     @content;
   }
 }

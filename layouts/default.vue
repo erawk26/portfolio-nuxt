@@ -1,21 +1,21 @@
 <template>
   <div>
-    <div class="navigation-drawer">
-      <ul class="nav-menu menu--main flex row center unstyle left">
+    <nav class="navigation-drawer">
+      <ul class="nav-main menu--main flex row center max-pg-width unstyle">
         <li
-          v-for="(item, i) in items"
+          v-for="(item, i) in menu.main"
           :key="i"
           :class="{ active: $route.path == item.to }"
           class="nav-item"
         >
-          <router-link
+          <nuxt-link
             :to="item.to"
             class="flex inline a-center j-start left unstyle"
             router
           >
             <i class="material-icons">{{ item.icon }}</i>
             <span class="uc menu-title" v-text="item.title" />
-          </router-link>
+          </nuxt-link>
         </li>
         <!-- <li class="flex-spacer" /> -->
         <li class="file-item flex inline a-center j-end left unstyle">
@@ -29,56 +29,47 @@
           </a>
         </li>
       </ul>
-    </div>
+    </nav>
     <nuxt />
-    <a id="back-to-top" class="back-to-top" href="#intro">Back to Top</a>
+    <a id="back-to-top" class="back-to-top flex center" href="#">
+      <span class="screen-reader">Back to Top</span>
+      <i class="fa fa-caret-up fa-2x" />
+    </a>
     <footer id="sticky-footer">
-      <div class="mw-wrapper">
+      <div class="max-pg-width flex center wrap">
         <div class="cell copy">
-          <small>© 2015-{{ year }}. Made by Erik Olsen</small>
+          <sub>© 2015-{{ year }}. Made by Erik Olsen</sub>
         </div>
         <div class="cell">
-          <div class="contact">
-            <a
-              href="#contactForm"
-              title="me@erikthedeveloper.com"
-              target="_blank"
+          <ul class="nav-social menu--contact flex row center unstyle">
+            <li
+              v-for="(item, i) in menu.footer"
+              :key="i"
+              :class="{ active: $route.path == item.to }"
+              class
             >
-              <i class="fa fa-envelope-o">
-                <span class="screen-reader">E-Mail</span>
-              </i>
-            </a>
-            <a href="#contactForm" title="+1-802-851-5512" target="_blank">
-              <i class="fa fa-phone">
-                <span class="screen-reader">Phone</span>
-              </i>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/erikthedeveloper"
-              title="LinkedIn"
-              target="_blank"
-            >
-              <i class="fa fa-linkedin">
-                <span class="screen-reader">LinkedIn</span>
-              </i>
-            </a>
-            <a href="https://github.com/erawk26" title="GitHub" target="_blank">
-              <i class="fa fa-github">
-                <span class="screen-reader">Github</span>
-              </i>
-            </a>
-            <a
-              href="https://codepen.io/erawk26"
-              title="CodePen"
-              target="_blank"
-            >
-              <i class="fa fa-codepen">
-                <span class="screen-reader">Codepen</span>
-              </i>
-            </a>
-          </div>
+              <nuxt-link
+                v-if="!item.external"
+                :to="item.to"
+                class="flex inline a-center j-start left unstyle"
+                :title="item.title"
+              >
+                <i class="fa" :class="'fa-' + item.icon" />
+                <span class="screen-reader" v-text="item.title" />
+              </nuxt-link>
+              <a
+                v-else
+                :href="item.to"
+                class="flex inline a-center j-start left unstyle"
+                :title="item.title"
+                target="_blank"
+              >
+                <i class="fa" :class="'fa-' + item.icon" />
+                <span class="screen-reader" v-text="item.title" />
+              </a>
+            </li>
+          </ul>
         </div>
-        <div class="cell" />
       </div>
     </footer>
   </div>
@@ -88,23 +79,57 @@
 export default {
   data() {
     return {
-      items: [
-        {
-          icon: 'home',
-          title: 'EO',
-          to: '/'
-        },
-        {
-          icon: 'work',
-          title: 'Projects',
-          to: '/projects'
-        },
-        {
-          icon: 'mail_outline',
-          title: 'Contact',
-          to: '/contact'
-        }
-      ]
+      menu: {
+        main: [
+          {
+            icon: 'home',
+            title: 'EO',
+            to: '/'
+          },
+          {
+            icon: 'work',
+            title: 'Projects',
+            to: '/projects'
+          },
+          {
+            icon: 'mail_outline',
+            title: 'Contact',
+            to: '/contact'
+          }
+        ],
+        footer: [
+          {
+            external: false,
+            icon: 'envelope-o',
+            to: '/contact',
+            title: 'me@erikthedeveloper.com'
+          },
+          {
+            external: false,
+            icon: 'phone',
+            to: '/contact',
+            title: '+1-802-851-5512'
+          },
+          {
+            external: true,
+            icon: 'linkedin',
+            to: 'https://www.linkedin.com/in/erikthedeveloper',
+            title: 'LinkedIn'
+          },
+          {
+            external: true,
+            icon: 'github',
+            to: 'https://github.com/erawk26',
+            title: 'GitHub'
+          },
+          {
+            external: true,
+            icon: 'codepen',
+            to: 'https://codepen.io/erawk26',
+            title: 'CodePen'
+          }
+        ]
+      }
     }
   },
   computed: {
@@ -115,7 +140,10 @@ export default {
 }
 </script>
 <style lang="scss">
-ul.nav-menu {
+ul.nav-main {
+  &.max-pg-width {
+    margin: 0 auto;
+  }
   li {
     a {
       text-decoration: none;
@@ -170,7 +198,7 @@ ul.nav-menu {
   .material-icons {
     display: none;
   }
-  @media (max-width: 479px) {
+  @include mobile {
     .menu-title {
       display: none;
     }

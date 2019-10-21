@@ -11,6 +11,10 @@
 import Logo from '~/components/Logo.vue'
 
 export default {
+  transition(to, from) {
+    if (!from) return 'slide-down'
+    return +to.query.page < +from.query.page ? 'slide-up' : 'slide-down'
+  },
   components: {
     Logo
   }

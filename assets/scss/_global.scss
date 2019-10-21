@@ -30,7 +30,7 @@ body {
     margin: 2rem 0 2.5rem;
   }
 }
-.__layout .wrapper {
+#__layout .wrapper {
   min-height: calc(100vh - 100px);
 } // @TODO remove after done DEV DEBUGGING
 a,
@@ -197,7 +197,7 @@ h6 {
       opacity: 1;
     }
   }
-  @media (max-width: 767px) {
+  @include not-desktop {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -211,35 +211,6 @@ header {
   top: 0;
   left: 0;
   right: 0;
-  .main-nav {
-    @include set-max-width;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    width: 100%;
-    height: 80px;
-    padding-bottom: 20px;
-    color: black;
-    @media (max-width: ($bp-mw + 100)) {
-      padding: 0 25px 20px;
-    }
-    a {
-      margin: 0 25px;
-      font-size: 18px;
-      text-decoration: none;
-    }
-    > a:first-child {
-      margin-left: 0;
-    }
-    > a:last-child {
-      margin-right: 0;
-    }
-    .mid-links {
-      @media (max-width: 500px) {
-        display: none;
-      }
-    }
-  }
 }
 
 footer {
@@ -251,6 +222,37 @@ footer {
   bottom: 0;
   transform: translateY(0);
   transition: transform 200ms ease-out;
+  .nav-social {
+    li {
+      padding: 0 10px;
+      font-size: 2rem;
+    }
+    a {
+      position: relative;
+      &::after {
+        opacity: 0;
+        transform: translateY(20px);
+        content: '';
+        position: absolute;
+        bottom: -0.5rem;
+        left: 0;
+        height: 0;
+        width: 0;
+        overflow: hidden;
+        border-bottom: 1px inset $link;
+        transition: opacity $base-duration $base-duration,
+          transform $base-duration $base-duration,
+          border-bottom $base-duration $base-duration;
+      }
+      &:hover::after {
+        overflow: visible;
+        width: 100%;
+        height: 2px;
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
   &.hide {
     transform: translateY(105%);
   }
@@ -261,19 +263,12 @@ footer {
       text-decoration: none;
     }
   }
-  .mw-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    @include set-max-width;
-  }
   .cell {
     @include not-mobile {
-      flex: 1 1 auto;
-      //   @include flexchild(1, 1, auto);
+      //   flex: 1 1 auto;
     }
     &.copy {
+      flex: 1;
       @media (max-width: 550px) {
         order: 1;
       }
@@ -282,24 +277,20 @@ footer {
 }
 
 .back-to-top {
-  opacity: 0;
+//   opacity: 0;
   font-size: 0.75em;
   position: fixed;
   cursor: pointer;
-  bottom: 0;
-  right: 0;
-  display: inline-block;
-  padding: 1em;
-  margin: 1em;
+  bottom: 5rem;
+  right: 2.5rem;
+  width: 4rem;
+  height: 4rem;
   background: rgba(white, 0.75);
   border: 1px solid rgba(black, 0.4);
-  transition: all 0.25s linear;
-  border-radius: 4px;
+  @include default-transition;
+  border-radius: 50%;
   z-index: 3;
-  :hover {
-    border-radius: 4px;
+  &:hover {
     background: white;
-    border: 1px solid black;
-    cursor: pointer;
   }
 }

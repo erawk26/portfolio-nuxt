@@ -13,6 +13,10 @@
 import Logo from '~/components/Logo.vue'
 
 export default {
+  transition(to, from) {
+    if (!from) return 'slide-down'
+    return +to.query.page < +from.query.page ? 'slide-up' : 'slide-down'
+  },
   components: {
     Logo
   }
@@ -30,11 +34,9 @@ section.contact {
   }
 }
 /* Obnoxious styling for icon fonts */
-.contact .fa {
-  transition: all 0.5s ease;
+.nav-social .fa {
+  @include default-transition;
   color: $dk-gray;
-  //border:1px solid transparent;
-  border: none;
   &.fa-envelope-o {
     //color: rgb(201, 44, 25);
     &:hover {
