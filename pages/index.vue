@@ -2,7 +2,7 @@
   section.intro
     //- logo
     .wrapper.flex.col.center
-      img.add-bottom.headshot(src='/img/headshot2.jpg', alt="Erik Olsen")
+      img.add-bottom.headshot(src='~assets/img/headshot2.jpg', alt="Erik Olsen")
       p I'm Erik Olsen, a Web Developer currently based out of Sarasota, FL. I build fast responsive websites and applications.
       router-link.material-icons.next.add-top.unstyle(to="/projects") expand_more
 </template>
