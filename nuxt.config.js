@@ -1,4 +1,7 @@
 export default {
+  router: {
+    base: './'
+  },
   mode: 'universal',
   /*
    ** Headers of the page
