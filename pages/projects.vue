@@ -1,16 +1,21 @@
 <template>
   <section class="projects">
     <div class="wrapper flex col center">
-      <logo />
-      <h1 class="title">
-        Projects
-      </h1>
+      <Logo />
+      <h1 class="title">Projects</h1>
     </div>
+    <ul class="unstyle">
+      <li v-for="project in jobs" :key="'project-' + project.id">
+        <Project :project="project" />
+      </li>
+    </ul>
   </section>
 </template>
 
 <script>
 import Logo from '~/components/Logo.vue'
+import Project from '~/components/Project.vue'
+import projects from '~/assets/js/projects.js'
 
 export default {
   transition(to, from) {
@@ -18,8 +23,10 @@ export default {
     return +to.query.page < +from.query.page ? 'slide-right' : 'slide-left'
   },
   components: {
-    Logo
-  }
+    Logo,
+    Project
+  },
+  data: () => ({ jobs: projects.jobs })
 }
 </script>
 
