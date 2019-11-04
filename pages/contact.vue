@@ -1,10 +1,8 @@
 <template>
   <section class="contact">
     <div class="wrapper flex col center">
-      <logo />
-      <h1 class="title">
-        Contact
-      </h1>
+      <Logo />
+      <h1 class="title">Contact</h1>
     </div>
   </section>
 </template>
