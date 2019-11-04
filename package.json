@@ -12,7 +12,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "deploy": "push-dir --dir=build --branch=gh-pages"
+    "deploy": "push-dir --dir=dist --branch=gh-pages"
   },
   "dependencies": {
     "nuxt": "^2.0.0"
