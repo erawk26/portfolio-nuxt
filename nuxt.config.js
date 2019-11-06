@@ -1,6 +1,6 @@
 export default {
   router: {
-    // base: './'
+    base: './'
   },
   mode: 'universal',
   /*
