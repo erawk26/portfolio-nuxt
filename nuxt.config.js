@@ -1,6 +1,6 @@
 export default {
   router: {
-    base: './'
+    // base: './'
   },
   mode: 'universal',
   /*
@@ -52,6 +52,7 @@ export default {
    ** Nuxt.js modules
    */
   modules: [
+    'nuxt-validate',
     '@nuxtjs/eslint-module',
     '@nuxtjs/google-analytics',
     '@nuxtjs/style-resources'

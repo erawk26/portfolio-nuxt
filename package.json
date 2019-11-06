@@ -15,7 +15,8 @@
     "deploy": "push-dir --dir=dist --branch=gh-pages"
   },
   "dependencies": {
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "nuxt-validate": "^1.0.1"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",
