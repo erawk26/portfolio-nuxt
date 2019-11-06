@@ -9,7 +9,9 @@ const routerBase =
     : {}
 
 export default {
-  ...routerBase,
+  router: {
+    base: '/portfolio-nuxt/'
+  },
   mode: 'universal',
   /*
    ** Headers of the page
