@@ -1,34 +1,34 @@
 <template lang="pug">
   section.contact
-    .form-container
-      form#contactForm.color.black
-        h2 Drop me a Note!
-        .flex.wrap.contact-info
-          .cell.flex.a-center.inline.fa.fa-phone.color.black
-            span.screen-reader Phone Number
-            img.txt(src='~assets/img/phone.png', alt="Phone Number")
-          .cell.flex.a-center.inline.fa.fa-envelope-o
-            span.screen-reader E-Mail Address
-            img.txt(src='~assets/img/email.png', alt="Email")
-        .form-field.input-group
-          input.caps(name='name', type='text', placeholder='Name' v-validate="{ required: true, regex: /^[a-z,.'-]+\\s?[a-z,.'-]+$/i }" v-model="visitor.name" @focus='checkField' @blur='checkField')
-          label Name
-        .form-field.input-group
-          input.caps(type="phone", name="phone", id="visitor-phone", v-model="visitor.phone", v-validate="{ required: false, regex: /^(?:1|1 )*(\\([2-9]{1}\\d{2}\\)|[2-9]{1}\\d{2})[- ]*(\\d{3})[- ]*(\\d{4})$/ }" @focus='checkField' @blur='checkField')
-          label Phone Number
-        .form-field.input-group
-          input(name='email', type='email', placeholder='Email Address' formnovalidate="true" v-validate="'required|email'" v-model="visitor.email" @focus='checkField' @blur='checkField')
-          label Email Address
-        .form-field.input-group
-          textarea(name='message', rows='5', placeholder='Message' v-model="visitor.message" v-validate="{ required: true, min:10 }" @focus='checkField' @blur='checkField')
-          label Message
-
-        ul.unstyle.is-danger(v-if="errors.items.length >0")
-          li.error-item(v-for="error in errors.items")
-            p.is-danger.help {{ error.msg }}
-        #status-message
-          p {{ status }}
-        button#submit(type='submit' @click="validateForm") Send
+    .wrapper.flex.center
+      .form-container
+        form#contactForm.color.black
+          h2 Drop me a Note!
+          .flex.wrap.contact-info
+            .cell.flex.a-center.inline.fa.fa-phone.color.black
+              span.screen-reader Phone Number
+              img.txt(src='~assets/img/phone.png', alt="Phone Number")
+            .cell.flex.a-center.inline.fa.fa-envelope-o
+              span.screen-reader E-Mail Address
+              img.txt(src='~assets/img/email.png', alt="Email")
+          .form-field.input-group
+            input.caps(name='name', type='text', placeholder='Name' v-validate="{ required: true, regex: /^[a-z,.'-]+\\s?[a-z,.'-]+$/i }" v-model="visitor.name" @focus='checkField' @blur='checkField')
+            label Name
+          .form-field.input-group
+            input.caps(type="phone", name="phone", id="visitor-phone", v-model="visitor.phone", v-validate="{ required: false, regex: /^(?:1|1 )*(\\([2-9]{1}\\d{2}\\)|[2-9]{1}\\d{2})[- ]*(\\d{3})[- ]*(\\d{4})$/ }" @focus='checkField' @blur='checkField')
+            label Phone Number
+          .form-field.input-group
+            input(name='email', type='email', placeholder='Email Address' formnovalidate="true" v-validate="'required|email'" v-model="visitor.email" @focus='checkField' @blur='checkField')
+            label Email Address
+          .form-field.input-group
+            textarea(name='message', rows='5', placeholder='Message' v-model="visitor.message" v-validate="{ required: true, min:10 }" @focus='checkField' @blur='checkField')
+            label Message
+          ul.unstyle.is-danger(v-if="errors.items.length >0 && showErrors")
+            li.error-item(v-for="error in errors.items")
+              p.is-danger.help {{ error.msg }}
+          #status-message
+            p {{ status }}
+          button#submit(type='submit' @click="validateForm") Send
 </template>
 
 <script>
@@ -82,7 +82,7 @@ export default {
         })
         .catch((err) => {
           this.status =
-            "I'm sorry There was an error with sending your message. :("
+            "I'm sorry There was an error with sending your message. :(\n" + err
           console.log(err)
           this.resetForm()
         })
@@ -111,7 +111,6 @@ $rvt-dealer-bp-max: $bp-sm;
 $formRed: $dk-red;
 form label {
   font-family: $fontHead;
-  font-size: 1.2em;
   letter-spacing: 1px;
 }
 .contact-info {

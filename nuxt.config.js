@@ -1,16 +1,6 @@
-// only add `router.base = '/<repository-name>/'` if `DEPLOY_ENV` is `GH_PAGES`
-const routerBase =
-  process.env.DEPLOY_ENV === 'GH_PAGES'
-    ? {
-        router: {
-          base: '/portfolio-nuxt/'
-        }
-      }
-    : {}
-
 export default {
   router: {
-    base: '/portfolio-nuxt/'
+    // base: '/portfolio-nuxt/'
   },
   mode: 'universal',
   /*
