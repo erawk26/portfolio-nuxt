@@ -50,15 +50,14 @@
   background-image: $svg-colorized;
   background-repeat: no-repeat;
 }
-
 // Make an element visually hidden, but accessible to screen readers, etc.
 // @see http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
 @mixin visually-hidden {
   position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
   height: 1px;
   width: 1px;
-  overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
   word-wrap: normal;
 }
 
@@ -66,9 +65,9 @@
 @mixin visually-hidden--off {
   position: static !important;
   clip: auto;
+  overflow: visible;
   height: auto;
   width: auto;
-  overflow: visible;
 }
 
 // HEADINGS
@@ -158,7 +157,19 @@
     line-height: $h6-line-height;
   }
 }
-
+@mixin width-grid($spacing: 5px, $cols:3){
+  $width: calc((99.95% / #{$cols}) - #{$spacing});
+  margin:0;
+  margin-top: -$spacing!important;
+  margin-left: -$spacing!important;
+  > * {
+    margin: $spacing 0 0 $spacing!important;
+    flex: 1 1 $width;
+    max-width: $width;
+    width: 100%;
+    overflow: hidden;
+  }
+}
 // BUTTONS ////////
 @mixin arrow-cta($color: $black, $hover: $blue) {
   @if $color==$black {

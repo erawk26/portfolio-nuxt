@@ -1,20 +1,13 @@
 <template>
   <section class="projects">
     <div class="wrapper flex col center">
-      <Logo />
-      <h1 class="title">Projects</h1>
+      <nuxt-child />
     </div>
-    <ul class="unstyle">
-      <li v-for="project in jobs" :key="'project-' + project.id">
-        <Project :project="project" />
-      </li>
-    </ul>
   </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import Project from '~/components/Project.vue'
+// import Project from '~/components/Project.vue'
 import projects from '~/assets/js/projects.js'
 
 export default {
@@ -22,15 +15,52 @@ export default {
     if (!from) return 'slide-left'
     return +to.query.page < +from.query.page ? 'slide-right' : 'slide-left'
   },
-  components: {
-    Logo,
-    Project
-  },
+  components: {},
   data: () => ({ jobs: projects.jobs })
 }
 </script>
 
-<style>
+<style lang="scss">
+.project-link {
+  a {
+    text-decoration: none;
+    border-bottom: none;
+    font-family: $fontHead;
+    font-size: 2.4rem;
+    line-height: 1;
+    @include textLink($link-color-normal, $link-color-active);
+    position: relative;
+    &::after {
+      opacity: 0;
+      transform: translateY(20px);
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      height: 0;
+      width: 0;
+      overflow: hidden;
+      border-bottom: 1px inset $link;
+      transition: opacity $base-duration $base-duration,
+        transform $base-duration $base-duration,
+        border-bottom $base-duration $base-duration;
+    }
+  }
+  &:hover,
+  &.active {
+    a {
+      color: $link-color-active;
+      &::after {
+        border-bottom-color: $link-color-active;
+        overflow: visible;
+        width: 100%;
+        height: 2px;
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+}
 .title {
   font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
