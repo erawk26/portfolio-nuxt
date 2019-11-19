@@ -25,11 +25,6 @@ export default {
     menus() {
       return this.$store.state.menus
     }
-  },
-  computed: {
-    menus() {
-      return this.$store.state.menus
-    }
   }
   //   validate({ params }) {
   //     console.log(params)
