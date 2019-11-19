@@ -7,15 +7,15 @@
 </template>
 
 <script>
-import projects from '~/assets/js/projects.js'
 import Project from '~/components/FlipCard.vue'
 
 export default {
   components: { Project },
-  data: () => ({
-    projects: projects.jobs
-  }),
+  data: () => ({}),
   computed: {
+    projects() {
+      return this.$store.state.projects
+    },
     keys() {
       return Object.keys(this.projects)
     }

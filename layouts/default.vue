@@ -2,7 +2,7 @@
 .scrolled(:class='scrolled')
     nav.navigation-drawer.fill.white
       ul.nav-main.menu--main.flex.row.center.max-pg-width.unstyle
-        li.nav-item(v-for='(item, i) in menu.main' :key='i' :class='{ active: $route.path == item.to }')
+        li.nav-item(v-for='(item, i) in menus.main' :key='i' :class='{ active: $route.path == item.to }')
           nuxt-link.flex.inline.a-center.j-start.left.unstyle(:to='item.to' router='')
             i.material-icons {{ item.icon }}
             span.uc.menu-title(v-text='item.title')
@@ -22,7 +22,7 @@
           sub &copy; 2015-{{ year }}. Made by Erik Olsen
         .cell
           ul.nav-social.menu--contact.flex.row.center.unstyle
-            li(v-for='(item, i) in menu.footer' :key='i' :class='{ active: $route.path == item.to }')
+            li(v-for='(item, i) in menus.footer' :key='i' :class='{ active: $route.path == item.to }')
               nuxt-link.flex.inline.a-center.j-start.left.unstyle(v-if='!item.external' :to='item.to' :title='item.title')
                 i.fa(:class="'fa-' + item.icon")
                   span.screen-reader(v-text='item.title')
@@ -30,74 +30,17 @@
                 i.fa(:class="'fa-' + item.icon")
                   span.screen-reader(v-text='item.title')
 </template>
-
 <script>
-import projects from '~/assets/js/projects.js'
 export default {
   data() {
     return {
-      scrolled: 'top',
-      // storeMenu: this.$store.state.menus,
-      menu: {
-        main: [
-          {
-            icon: 'home',
-            title: 'EO',
-            to: '/'
-          },
-          {
-            icon: 'work',
-            title: 'Projects',
-            to: '/projects'
-          },
-          {
-            icon: 'mail_outline',
-            title: 'Contact',
-            to: '/contact'
-          }
-        ],
-        footer: [
-          {
-            external: false,
-            icon: 'envelope-o',
-            to: '/contact',
-            title: 'me@erikthedeveloper.com'
-          },
-          {
-            external: false,
-            icon: 'phone',
-            to: '/contact',
-            title: '+1-802-851-5512'
-          },
-          {
-            external: true,
-            icon: 'linkedin',
-            to: 'https://www.linkedin.com/in/erikthedeveloper',
-            title: 'LinkedIn'
-          },
-          {
-            external: true,
-            icon: 'github',
-            to: 'https://github.com/erawk26',
-            title: 'GitHub'
-          },
-          {
-            external: true,
-            icon: 'codepen',
-            to: 'https://codepen.io/erawk26',
-            title: 'CodePen'
-          }
-        ],
-        projects: Object.keys(projects.jobs).map((p) => ({
-          external: false,
-          icon: null,
-          to: '/projects/' + p,
-          title: projects.jobs[p]['title']
-        }))
-      }
+      scrolled: 'top'
     }
   },
   computed: {
+    menus() {
+      return this.$store.state.menus
+    },
     year() {
       return new Date().getFullYear()
     }

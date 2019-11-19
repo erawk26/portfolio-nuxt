@@ -13,17 +13,15 @@
 </template>
 <script>
 import Link from '~/components/Link.vue'
-import projects from '~/assets/js/projects.js'
 export default {
   components: { Link },
-  data() {
-    console.log(this)
-    return {
-      projects: projects.jobs,
-      project: projects.jobs[this.$route.params.id]
-    }
-  },
   computed: {
+    projects() {
+      return this.$store.state.projects
+    },
+    project() {
+      return this.$store.state.projects[this.$route.params.id]
+    },
     menus() {
       return this.$store.state.menus
     }

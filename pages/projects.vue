@@ -7,16 +7,12 @@
 </template>
 
 <script>
-// import Project from '~/components/Project.vue'
-import projects from '~/assets/js/projects.js'
-
 export default {
   transition(to, from) {
     if (!from) return 'slide-left'
     return +to.query.page < +from.query.page ? 'slide-right' : 'slide-left'
   },
-  components: {},
-  data: () => ({ jobs: projects.jobs })
+  components: {}
 }
 </script>
 

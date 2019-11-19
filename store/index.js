@@ -1,4 +1,6 @@
+import projects from '~/assets/js/projects.js'
 export const state = () => ({
+  projects: { ...projects.jobs },
   menus: {
     main: [
       {
@@ -48,7 +50,13 @@ export const state = () => ({
         to: 'https://codepen.io/erawk26',
         title: 'CodePen'
       }
-    ]
+    ],
+    projects: Object.keys(projects.jobs).map((p) => ({
+      external: false,
+      icon: null,
+      to: '/projects/' + p,
+      title: projects.jobs[p]['title']
+    }))
   }
 })
 
