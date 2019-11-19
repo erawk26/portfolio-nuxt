@@ -1,92 +1,43 @@
-<template>
-  <div class="scrolled" :class="scrolled">
-    <nav class="navigation-drawer fill white">
-      <ul class="nav-main menu--main flex row center max-pg-width unstyle">
-        <li
-          v-for="(item, i) in menu.main"
-          :key="i"
-          :class="{ active: $route.path == item.to }"
-          class="nav-item"
-        >
-          <nuxt-link
-            :to="item.to"
-            class="flex inline a-center j-start left unstyle"
-            router
-          >
-            <i class="material-icons">{{ item.icon }}</i>
-            <span class="uc menu-title" v-text="item.title" />
-          </nuxt-link>
-        </li>
-        <!-- <li class="flex-spacer" /> -->
-        <li class="file-item flex inline a-center j-end left unstyle">
-          <a
-            href="./ErikOlsen_Resume.pdf"
-            target="_blank"
-            class="flex center left"
-          >
-            <i class="material-icons">picture_as_pdf</i>
-            <span class="uc menu-title">Resume</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <nuxt />
-    <transition name="fade">
-      <a
-        v-if="scrolled != 'top'"
-        id="back-to-top"
-        class="back-to-top flex center"
-        href="#"
-      >
-        <span class="screen-reader">Back to Top</span>
-        <i class="fa fa-caret-up fa-2x" />
-      </a>
-    </transition>
-    <footer id="sticky-footer">
-      <div class="max-pg-width flex center wrap">
-        <div class="cell copy">
-          <sub>© 2015-{{ year }}. Made by Erik Olsen</sub>
-        </div>
-        <div class="cell">
-          <ul class="nav-social menu--contact flex row center unstyle">
-            <li
-              v-for="(item, i) in menu.footer"
-              :key="i"
-              :class="{ active: $route.path == item.to }"
-              class
-            >
-              <nuxt-link
-                v-if="!item.external"
-                :to="item.to"
-                class="flex inline a-center j-start left unstyle"
-                :title="item.title"
-              >
-                <i class="fa" :class="'fa-' + item.icon" />
-                <span class="screen-reader" v-text="item.title" />
-              </nuxt-link>
-              <a
-                v-else
-                :href="item.to"
-                class="flex inline a-center j-start left unstyle"
-                :title="item.title"
-                target="_blank"
-              >
-                <i class="fa" :class="'fa-' + item.icon" />
-                <span class="screen-reader" v-text="item.title" />
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </footer>
-  </div>
+<template lang="pug">
+.scrolled(:class='scrolled')
+    nav.navigation-drawer.fill.white
+      ul.nav-main.menu--main.flex.row.center.max-pg-width.unstyle
+        li.nav-item(v-for='(item, i) in menu.main' :key='i' :class='{ active: $route.path == item.to }')
+          nuxt-link.flex.inline.a-center.j-start.left.unstyle(:to='item.to' router='')
+            i.material-icons {{ item.icon }}
+            span.uc.menu-title(v-text='item.title')
+        // <li class="flex-spacer" />
+        li.file-item.flex.inline.a-center.j-end.left.unstyle
+          a.flex.center.left(href='./ErikOlsen_Resume.pdf' target='_blank')
+            i.material-icons picture_as_pdf
+            span.uc.menu-title Resume
+    nuxt
+    transition(name='fade')
+      a#back-to-top.back-to-top.flex.center(v-if="scrolled != 'top'" href='#')
+        span.screen-reader Back to Top
+        i.fa.fa-caret-up.fa-2x
+    footer#sticky-footer
+      .max-pg-width.flex.center.wrap
+        .cell.copy
+          sub &copy; 2015-{{ year }}. Made by Erik Olsen
+        .cell
+          ul.nav-social.menu--contact.flex.row.center.unstyle
+            li(v-for='(item, i) in menu.footer' :key='i' :class='{ active: $route.path == item.to }')
+              nuxt-link.flex.inline.a-center.j-start.left.unstyle(v-if='!item.external' :to='item.to' :title='item.title')
+                i.fa(:class="'fa-' + item.icon")
+                  span.screen-reader(v-text='item.title')
+              a.flex.inline.a-center.j-start.left.unstyle(v-else='' :href='item.to' :title='item.title' target='_blank')
+                i.fa(:class="'fa-' + item.icon")
+                  span.screen-reader(v-text='item.title')
 </template>
 
 <script>
+import projects from '~/assets/js/projects.js'
 export default {
   data() {
     return {
       scrolled: 'top',
+      // storeMenu: this.$store.state.menus,
       menu: {
         main: [
           {
@@ -136,7 +87,13 @@ export default {
             to: 'https://codepen.io/erawk26',
             title: 'CodePen'
           }
-        ]
+        ],
+        projects: Object.keys(projects.jobs).map((p) => ({
+          external: false,
+          icon: null,
+          to: '/projects/' + p,
+          title: projects.jobs[p]['title']
+        }))
       }
     }
   },

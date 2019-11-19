@@ -1,9 +1,9 @@
 export default {
-  jobs: [
-    {
+  jobs: {
+    tybee: {
       // -----------JOB-tybee-----------
-      links: { main: { href: 'https://visittybee.com' } },
       id: 'tybee',
+      links: { main: { href: 'https://visittybee.com' } },
       img: 'tybee.png',
       // logo: "tybee-logo.png",
       title: 'Visit Tybee Island',
@@ -17,10 +17,10 @@ export default {
       desc:
         "This was one of my first builds at Miles Partnership. It's a really clean, interactive, Destination Marketing site built in Drupal 7. We used a lot of custom modules and features and relied heavily on component based CMS building. This project was a ton of fun to help familiarize myself with destination style marketing!"
     },
-    {
+    otis: {
       // -----------JOB-otis-----------
-      links: { main: { href: 'https://www.otisspunkmeyer.com' } },
       id: 'otis',
+      links: { main: { href: 'https://www.otisspunkmeyer.com' } },
       img: 'otis.jpg',
       logo: 'otis-logo.png',
       title: 'Otis Spunkmeyer',
@@ -35,10 +35,10 @@ export default {
       desc:
         'While working at Hark, I replatformed the entire site from their old custom CMS into Drupal 8 in May 2017. They needed an easier way to manage their SEO and content and Drupal fit the bill. In November of 2017, I built off the same backend but rethemed the site. This was a massive undertaking. The PSD mockup was 37 pages for mobile/desktop.'
     },
-    {
+    labrea: {
       // -----------JOB-labrea-----------
-      links: { main: { href: 'https://www.labreabakery.com/kroger' } },
       id: 'labrea',
+      links: { main: { href: 'https://www.labreabakery.com/kroger' } },
       img: 'labrea.jpg',
       logo: 'labrea-logo.png',
       title: 'La Brea Bakery',
@@ -53,10 +53,10 @@ export default {
       desc:
         'I coded image galleries to the Bread sections. Re-Templated the Recipes pages. I also developed 5 different landing pages for various product promotions.'
     },
-    {
+    zevia: {
       // -----------JOB-zevia-----------
-      links: { main: { href: 'https://www.zevia.com/sugar-reduction' } },
       id: 'zevia',
+      links: { main: { href: 'https://www.zevia.com/sugar-reduction' } },
       img: 'zevia.jpg',
       logo: 'zevia-logo.png',
       title: 'Zevia',
@@ -70,10 +70,10 @@ export default {
       desc:
         'I developed multiple landing pages to promote things like Ferdinand the movie, Health, etc. The Sugar Reduction landing page featured the youtube API and needed to maintain a borderless aspect ratio, as well as working across all mobile and desktop devices. I redid their current blog pages (teaser & full template). I also created bi-monthly Mailchimp templates for them in HTML from their PSDs.'
     },
-    {
+    hark: {
       // -----------JOB-hark-----------
-      links: { main: { href: 'https://www.hark.bz' } },
       id: 'hark',
+      links: { main: { href: 'https://www.hark.bz' } },
       img: 'hark.png',
       logo: 'hark-logo.png',
       title: 'Hark Digital',
@@ -87,22 +87,22 @@ export default {
       desc:
         'I helped replatform the current version of their site on Wordpress using wordpressify a node compiler for WP. I leveraged Masonry/Infinite scroll together to manage larger lists of content. I coded this site with limited modules and lots of custom queries/templating. The contact page has a nice label slide up effect when entering input.'
     },
-    {
+    nsb: {
       // -----------JOB-nsb-----------
+      id: 'nsb',
       links: {
         main: { href: 'https://www.nsbvt.com/mortgages/first-time-homebuying' }
       },
-      id: 'nsb',
       img: 'nsb.jpg',
       logo: 'nsb-logo.png',
       title: 'Northfield Savings Bank',
       desc:
         'I coded the Pathway Mortgage landing page. A fully responsive page to create a call to action for first time home buyers. Features a nicely styled jquery accordion list.'
     },
-    {
+    cbv: {
       // -----------JOB-cbv-----------
-      img: 'cbv.png',
       id: 'cbv',
+      img: 'cbv.png',
       logo: 'cbv-logo.png',
       title: 'Community Barn Ventures',
       skills: [
@@ -131,10 +131,10 @@ export default {
       desc:
         'I coded the Client Landing Page, Individual Pages, sliders, client blocks, and Testimonials. The LP has a client grid that leverages CSS Grid and jQuery. I wrote some JS to arrange the bigger clients into predefined spaces then fills the smaller clients in around them, without any unwanted spaces. Its also completely responsive and will rearrange the grid based on screen size.'
     },
-    {
+    mbf: {
       // -----------JOB-mbf-----------
-      links: { main: { href: 'https://www.mbfbioscience.com' } },
       id: 'mbf',
+      links: { main: { href: 'https://www.mbfbioscience.com' } },
       img: 'mbf.jpg',
       logo: 'mbf-logo.png',
       title: 'MBF Bioscience',
@@ -150,10 +150,10 @@ export default {
       desc:
         'We Added a mobile menu to their site. This proved to be quite intensive due to the way their current menu plugin was working. We also reconfigured their content templates to give the author custom control of each sections background color, borders, etc.'
     },
-    {
+    foursight: {
       // -----------JOB-4sight-----------
-      links: { main: { href: 'https://www.go4sight.com/blog' } },
       id: 'foursight',
+      links: { main: { href: 'https://www.go4sight.com/blog' } },
       img: '4sight.jpg',
       logo: '4sight-logo.png',
       title: '4 Sight',
@@ -169,10 +169,10 @@ export default {
     //   desc:
     //     "My eCommerce mobile-first site built off of Drupal 7. It featured recurring coffee subscriptions. It was very secure and easy to maintain. Everything got backed up and updated through SSH/Drush."
     // },
-    {
+    portfolio: {
       // -----------JOB-portfolio-----------
-      img: 'portfolio.png',
       id: 'portfolio',
+      img: 'portfolio.png',
       logo: '',
       title: 'This Portfolio',
       skills: [
@@ -198,5 +198,5 @@ export default {
       desc:
         'I built my portfolio with ES6 VanillaJS and Vue. It leverages Webpack to compile all my code, images, and single file components into a nice optimized bundle that is cross browser compatible and easy to deploy. I really enjoy working in Vue and I think single file components could be the future of web development.'
     }
-  ]
+  }
 }

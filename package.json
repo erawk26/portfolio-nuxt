@@ -17,6 +17,7 @@
     "deploy": "push-dir --dir=dist --branch=gh-pages"
   },
   "dependencies": {
+    "gsap": "^3.0.1",
     "nuxt": "^2.0.0",
     "nuxt-validate": "^1.0.1"
   },

@@ -1,6 +1,6 @@
 <template lang="pug">
   .project-container.flex.wrap.a-start
-    a.img.ar.sixteen-nine(:style="{'background':'url('+require('~/assets/img/'+project.img)+') center / cover no-repeat'}" :href="project.links.main.href" :title="project.title" :alt="project.title") 
+    a.img.ar.sixteen-nine(target="_blank" :style="{'background':'url('+require('~/assets/img/'+project.img)+') center / cover no-repeat'}" :href="project.links.main.href" :title="project.title" :alt="project.title") 
     .cell.alpha
       h2 {{ project.title }}
       p {{ project.desc }}
@@ -13,24 +13,20 @@
 </template>
 <script>
 import Link from '~/components/Link.vue'
+import projects from '~/assets/js/projects.js'
 export default {
   components: { Link },
-  props: {
-    project: {
-      type: Object,
-      default: () => ({
-        img: null,
-        logo: null,
-        title: null,
-        skills: [],
-        links: {
-          main: {},
-          other: []
-        },
-        desc: null
-      })
+  data() {
+    console.log(this)
+    return {
+      projects: projects.jobs,
+      project: projects.jobs[this.$route.params.id]
     }
   }
+  //   validate({ params }) {
+  //     console.log(params)
+  //        return params.id == this.props.project.id // if the params are valid
+  //   }
 }
 </script>
 <style lang="scss">

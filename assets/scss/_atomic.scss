@@ -1,5 +1,12 @@
-.screen-reader {
+.screen-reader,
+.visually-hidden {
   @include visually-hidden;
+  &.focusable {
+    &:active,
+    &:focus {
+      @include visually-hidden--off;
+    }
+  }
 }
 .tooltip * {
   border: none !important;
@@ -89,6 +96,24 @@
   &.lt-gray {
     color: $lt-gray;
   }
+  &.fire1 {
+    color: $fire1;
+  }
+  &.fire2 {
+    color: $fire2;
+  }
+  &.fire3 {
+    color: $fire3;
+  }
+  &.fire4 {
+    color: $fire4;
+  }
+  &.fire5 {
+    color: $fire5;
+  }
+  &.dk-green {
+    background-color: $dk-green;
+  }
 }
 .fill {
   &.primary {
@@ -112,6 +137,21 @@
   &.white {
     background-color: $white;
   }
+  &.fire1 {
+    background-color: $fire1;
+  }
+  &.fire2 {
+    background-color: $fire2;
+  }
+  &.fire3 {
+    background-color: $fire3;
+  }
+  &.fire4 {
+    background-color: $fire4;
+  }
+  &.fire5 {
+    background-color: $fire5;
+  }
   &.white-gloss {
     //http://colorzilla.com/gradient-editor/#ffffff+0,f3f3f3+50,ededed+51,ffffff+100;White+Gloss+%232
     background-color: $white; // Old browsers
@@ -126,6 +166,9 @@
   }
   &.dk-gray {
     background-color: $dk-gray;
+  }
+  &.dk-green {
+    background-color: $dk-green;
   }
   &.lt-gray {
     background-color: $lt-gray;

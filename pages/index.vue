@@ -13,10 +13,15 @@ import Logo from '~/components/Logo.vue'
 export default {
   transition(to, from) {
     if (!from) return 'slide-down'
-    return +to.query.page < +from.query.page ? 'slide-up' : 'slide-down'
+    console.log(to, from)
+    return 'slide-down'
+    // return +to.query.page < +from.query.page ? 'slide-up' : 'slide-down'
   },
   components: {
     Logo
+  },
+  data() {
+    return { menu: this.$router.options.routes.map((x) => x.path) }
   }
 }
 </script>
@@ -55,22 +60,17 @@ section.intro {
   }
   .headshot {
     border-radius: 50%;
-    /* //@include single-box-shadow(.35em, .35em, .55em, 0, rgba(black, 0.4));
-    //transform: rotate(10deg); */
-    -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-    filter: FlipH;
-    -ms-filter: 'FlipH';
+    box-shadow: -3px 3px 7px 0 rgba(black, 0.4);
+    transform: scaleX(-1) rotate(8deg);
+    // filter: drop-shadow(1px 1px 4px rgba($black, 0.6));
     width: 250px;
     height: 250px;
     display: block;
-    /* //border: 0.45em solid #fff;
-    //border: 0.45em solid rgba(white, 0.75); */
+    //border: 0.45em solid #fff;
+    //border: 0.45em solid rgba(white, 0.75);
     z-index: 9;
     @media (max-width: $bp-sm-max) {
-      /* // margin-bottom: 25px; */
+      // margin-bottom: 25px;
     }
   }
 }
