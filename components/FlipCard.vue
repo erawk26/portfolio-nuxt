@@ -115,20 +115,5 @@ export default {
       z-index: 0;
     }
   }
-  .card-front {
-    //@include dropShadow;
-    &:before {
-    }
-  }
-  .card-back {
-    // &:before {
-    //   background: linear-gradient(
-    //     180deg,
-    //     rgba(0, 0, 0, 0.75) 10%,
-    //     transparent 50%,
-    //     transparent
-    //   );
-    // }
-  }
 }
 </style>
