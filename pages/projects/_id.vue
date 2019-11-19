@@ -22,6 +22,11 @@ export default {
       projects: projects.jobs,
       project: projects.jobs[this.$route.params.id]
     }
+  },
+  computed: {
+    menus() {
+      return this.$store.state.menus
+    }
   }
   //   validate({ params }) {
   //     console.log(params)
