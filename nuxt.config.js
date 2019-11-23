@@ -1,3 +1,4 @@
+import colors from 'vuetify/lib/util/colors'
 export default {
   router: {
     base: '/portfolio-nuxt/'
@@ -27,7 +28,7 @@ export default {
       {
         rel: 'stylesheet',
         href:
-          'https://fonts.googleapis.com/css?family=Work+Sans:500|Material+Icons'
+          'https://fonts.googleapis.com/css?family=Libre+Baskerville|Yanone+Kaffeesatz|Material+Icons'
       },
       {
         rel: 'stylesheet',
@@ -52,6 +53,24 @@ export default {
    ** Nuxt.js modules
    */
   modules: [
+    [
+      '@nuxtjs/vuetify',
+      {
+        theme: {
+          themes: {
+            light: {
+              primary: '#fff',
+              secondary: '#000',
+              accent: '#206634',
+              error: colors.red.accent3
+            },
+            dark: {
+              primary: colors.blue.lighten3
+            }
+          }
+        }
+      }
+    ],
     'nuxt-validate',
     '@nuxtjs/eslint-module',
     '@nuxtjs/google-analytics',

@@ -22,7 +22,7 @@ form {
       margin: 0 5px 10px 0;
     }
   }
-  font-size: 14px;
+  font-size: 18px;
   @media (min-width: $bp-sm) {
     font-size: 18px;
   }
@@ -43,25 +43,6 @@ form {
     transition: border-color 250ms ease-out;
     &.invalid {
       border-color: rgba($dk-red, 0.75);
-    }
-  }
-  label {
-    transition: background 0ms linear 100ms, transform 200ms ease-in,
-      font-size 500ms ease-out 300ms;
-    @extend .uc;
-    transform: translateY(0);
-    top: 0;
-    left: 5px;
-    padding: 9px 5px;
-    font-size: 0.75em;
-    position: absolute;
-    z-index: 0;
-    line-height: 1;
-    &.slide-up {
-      color: #444;
-      background: #fff;
-      font-size: 0.6em;
-      transform: translateY(-51%);
     }
   }
 

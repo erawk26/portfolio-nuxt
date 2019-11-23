@@ -157,19 +157,6 @@
     line-height: $h6-line-height;
   }
 }
-@mixin width-grid($spacing: 5px, $cols:3){
-  $width: calc((99.95% / #{$cols}) - #{$spacing});
-  margin:0;
-  margin-top: -$spacing!important;
-  margin-left: -$spacing!important;
-  > * {
-    margin: $spacing 0 0 $spacing!important;
-    flex: 1 1 $width;
-    max-width: $width;
-    width: 100%;
-    overflow: hidden;
-  }
-}
 // BUTTONS ////////
 @mixin arrow-cta($color: $black, $hover: $blue) {
   @if $color==$black {

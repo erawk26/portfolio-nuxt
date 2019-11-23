@@ -1,28 +1,23 @@
 <template lang="pug">
   section.intro
-    //- logo
     .wrapper.flex.col.center
-      img.add-bottom.headshot(src='~assets/img/headshot2.jpg', alt="Erik Olsen")
+      img.headshot.add-bottom.elevation-5(
+        src='~/assets/img/headshot2.jpg'
+        alt="Erik Olsen")
       p I'm Erik Olsen, a Web Developer currently based out of Sarasota, FL. I build fast responsive websites and applications.
       router-link.material-icons.next.add-top.unstyle(to="/projects") expand_more
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
 export default {
   transition(to, from) {
     if (!from) return 'slide-down'
-    console.log(to, from)
+    // console.log(to, from)
     return 'slide-down'
     // return +to.query.page < +from.query.page ? 'slide-up' : 'slide-down'
   },
-  components: {
-    Logo
-  },
-  data() {
-    return { menu: this.$router.options.routes.map((x) => x.path) }
-  }
+  components: {},
+  data: () => ({})
 }
 </script>
 
@@ -60,7 +55,7 @@ section.intro {
   }
   .headshot {
     border-radius: 50%;
-    box-shadow: -3px 3px 7px 0 rgba(black, 0.4);
+    // box-shadow: -3px 3px 7px 0 rgba(black, 0.4);
     transform: scaleX(-1) rotate(8deg);
     // filter: drop-shadow(1px 1px 4px rgba($black, 0.6));
     width: 250px;
@@ -68,7 +63,7 @@ section.intro {
     display: block;
     //border: 0.45em solid #fff;
     //border: 0.45em solid rgba(white, 0.75);
-    z-index: 9;
+    // z-index: 9;
     @media (max-width: $bp-sm-max) {
       // margin-bottom: 25px;
     }
