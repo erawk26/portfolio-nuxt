@@ -1,22 +1,43 @@
 <template lang="pug">
-.scrolled(:class='scrolled')
-    nav.navigation-drawer.fill.white
-      ul.nav-main.menu--main.flex.row.center.max-pg-width.unstyle
+  v-app
+    v-navigation-drawer(v-model='drawer', app='')
+      v-list.nav-main.menu--main.unstyle(dense='')
+        v-list-item(v-for='(item, i) in menus.main' :key='i' :class='{ active: $route.path == item.to }' class="nav-item" link='' @click.stop='drawer = false')
+          nuxt-link.flex.center.uc(:to="item.to")
+            v-list-item-action
+              v-icon {{item.icon}}
+            v-list-item-content
+              v-list-item-title {{item.title}}
+        v-list-item.file-item
+          a.flex.center.uc(href='./ErikOlsen_Resume.pdf' target='_blank')
+            v-list-item-action  
+              v-icon picture_as_pdf
+            v-list-item-content
+              v-list-item-title Resume
+    v-app-bar(app='', color='white', dark='')
+      button.hamburger.hamburger--arrowalt(type='button' @click.stop='drawer = !drawer' :class="{'is-active':drawer}")
+        span.hamburger-box
+          span.hamburger-inner.fill.dk-gray
+      v-toolbar-title.color.blk EO
+    //v-navigation-drawer(floating permanent)
+      ul.nav-main.menu--main.unstyle
         li.nav-item(v-for='(item, i) in menus.main' :key='i' :class='{ active: $route.path == item.to }')
           nuxt-link.flex.inline.a-center.j-start.left.unstyle(:to='item.to' router='')
             i.material-icons {{ item.icon }}
             span.uc.menu-title(v-text='item.title')
         // <li class="flex-spacer" />
         li.file-item.flex.inline.a-center.j-end.left.unstyle
-          a.flex.center.left(href='./ErikOlsen_Resume.pdf' target='_blank')
+          a.flex.j-end.right-text(href='./ErikOlsen_Resume.pdf' target='_blank')
             i.material-icons picture_as_pdf
             span.uc.menu-title Resume
-    nuxt
-    transition(name='fade')
-      a#back-to-top.back-to-top.flex.center(v-if="scrolled != 'top'" href='#')
-        span.screen-reader Back to Top
-        i.fa.fa-caret-up.fa-2x
-    footer#sticky-footer
+    v-content.scrolled.fill.wht(:class='scrolled' tag="div")
+      v-container(fluid)
+        nuxt
+      transition(name='fade')
+        button#back-to-top.unstyle.back-to-top.flex.center(@click="$vuetify.goTo('#app')" v-if="scrolled != 'top'")
+          span.screen-reader Back to Top
+          i.fa.fa-caret-up.fa-2x
+    v-footer#sticky-footer
       .max-pg-width.flex.center.wrap
         .cell.copy
           sub &copy; 2015-{{ year }}. Made by Erik Olsen
@@ -34,6 +55,7 @@
 export default {
   data() {
     return {
+      drawer: false,
       scrolled: 'top'
     }
   },
@@ -81,7 +103,7 @@ export default {
 }
 </script>
 <style lang="scss">
-ul.nav-main {
+.nav-main {
   &.max-pg-width {
     margin: 0 auto;
   }
@@ -130,23 +152,26 @@ ul.nav-main {
     }
   }
 }
+.file-item a {
+  flex: 0;
+}
 .nav-item,
 .file-item {
   padding: 5px 10px;
-  .menu-title {
-    display: initial;
-  }
-  .material-icons {
-    display: none;
-  }
-  @include mobile {
-    .menu-title {
-      display: none;
-    }
-    .material-icons {
-      display: initial;
-    }
-  }
+  // .menu-title {
+  //   display: initial;
+  // }
+  // .material-icons {
+  //   display: none;
+  // }
+  // @include mobile {
+  //   .menu-title {
+  //     display: none;
+  //   }
+  //   .material-icons {
+  //     display: initial;
+  //   }
+  // }
 }
 .scrolled:not(.top) .navigation-drawer {
   z-index: 100;

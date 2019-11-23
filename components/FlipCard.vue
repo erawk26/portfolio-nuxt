@@ -1,14 +1,16 @@
 <template lang="pug">
   nuxt-link.flip-card.flex.wrap.a-start.ar.seven-five.rel(:to="'/projects/'+project.id")
-    article(@mouseenter="flipOver()" @mouseleave="flipLeave()")
-      .card-front.box-shadow.abs-center.flex.col.center(:style="{'background':'url('+require('~/assets/img/'+project.img)+') center / cover no-repeat'}")
-        .fill.dk-green.center-text
-          h3.headline.uc.color.white.text-shadow {{project.title}}
-      .card-back.box-shadow.abs-center.flex.col.center.fill.dk-green.center-text
-        h3.headline.uc.color.white.text-shadow {{project.title}}
-        ul.flex.center.wrap.unstyle.cell.omega
-          li.skill.fill.dk-gray(v-for="(skill, i) in project.skills")
-            span.color.white {{skill}}
+    article
+      v-card.card-front.abs-center.flex.col.center(ripple :elevation="hover?5:10")
+        v-img.img(:src="require('~/assets/img/'+project.img)" aspect-ratio="1.777")
+        .content.flex-grow.left-text
+          h3.headline.uc {{project.title}}
+      v-card.card-back.abs-center(ripple :elevation="hover?5:10")
+        .content.flex.col.a-center.j-start.fill.dk-green.center-text
+          h4.headline.uc.color.wht.text-shadow {{project.title}}
+          ul.flex.center.wrap.unstyle.cell.omega
+            li.skill.fill.dk-gray(v-for="(skill, i) in project.skills")
+              span.color.wht {{skill}}
 </template>
 <script>
 import { gsap } from 'gsap'
@@ -17,6 +19,7 @@ export default {
   components: { Link },
   props: {
     // direction: { type: Number, default: 0 },
+    hover: { type: Boolean, default: false },
     project: {
       type: Object,
       default: () => ({
@@ -33,9 +36,6 @@ export default {
       })
     }
   },
-  data: () => ({
-    hover: false
-  }),
   computed: {},
   watch: {
     hover(newVal) {
@@ -62,34 +62,27 @@ export default {
         rotationY: backRotation,
         duration: 1
       })
-    },
-    flipOver: function() {
-      this.hover = true
-    },
-    flipLeave: function() {
-      this.hover = false
     }
   }
 }
 </script>
 <style lang="scss">
-.ar {
+.img {
   width: 100%;
-  height: 0;
-  display: block;
+}
+.headline {
+  font-size: 2.2rem;
+  margin: 0;
+  line-height: 1.2;
+}
+.col {
   padding: 0;
-  &.sixteen-nine {
-    padding-bottom: (16 / 9) * 100%;
-  }
-  &.five-seven {
-    padding-bottom: (5 / 7) * 100%;
-  }
-  &.seven-five {
-    padding-bottom: (7 / 5) * 100%;
-  }
-  &.square {
-    padding-bottom: 100%;
-  }
+}
+.card-back .content {
+  height: 100%;
+}
+.card-front .content {
+  flex: 1 0 55px;
 }
 /// FLIP ANIMATION STYLING GOES UNDER HERE ///
 .flip-card article {
@@ -100,7 +93,10 @@ export default {
   height: 100%;
   .card-front,
   .card-back {
-    padding: 1rem;
+    .content {
+      padding: 1.5rem 2rem;
+      width: 100%;
+    }
     position: absolute;
     width: 100%;
     height: 100%;

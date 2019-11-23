@@ -5,7 +5,7 @@ export const state = () => ({
     main: [
       {
         icon: 'home',
-        title: 'EO',
+        title: 'Intro',
         to: '/'
       },
       {

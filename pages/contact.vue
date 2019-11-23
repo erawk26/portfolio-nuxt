@@ -2,10 +2,10 @@
   section.contact
     .wrapper.flex.center
       .form-container
-        form#contactForm.color.black
+        form#contactForm.color.blk
           h2 Drop me a Note!
           .flex.wrap.contact-info
-            .cell.flex.a-center.inline.fa.fa-phone.color.black
+            .cell.flex.a-center.inline.fa.fa-phone.color.blk
               span.screen-reader Phone Number
               img.txt(src='~assets/img/phone.png', alt="Phone Number")
             .cell.flex.a-center.inline.fa.fa-envelope-o
