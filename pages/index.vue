@@ -12,7 +12,7 @@
 export default {
   transition(to, from) {
     if (!from) return 'slide-down'
-    console.log(to, from)
+    // console.log(to, from)
     return 'slide-down'
     // return +to.query.page < +from.query.page ? 'slide-up' : 'slide-down'
   },
@@ -63,7 +63,7 @@ section.intro {
     display: block;
     //border: 0.45em solid #fff;
     //border: 0.45em solid rgba(white, 0.75);
-    z-index: 9;
+    // z-index: 9;
     @media (max-width: $bp-sm-max) {
       // margin-bottom: 25px;
     }

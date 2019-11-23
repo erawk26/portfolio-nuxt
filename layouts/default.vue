@@ -31,7 +31,7 @@
             i.material-icons picture_as_pdf
             span.uc.menu-title Resume
     v-content.scrolled.fill.wht(:class='scrolled' tag="div")
-      v-container(fluid)
+      v-container(fluid @click.stop='drawer = false')
         nuxt
       transition(name='fade')
         button#back-to-top.unstyle.back-to-top.flex.center(@click="$vuetify.goTo('#app')" v-if="scrolled != 'top'")

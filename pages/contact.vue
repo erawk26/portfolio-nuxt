@@ -11,23 +11,10 @@
             .cell.flex.a-center.inline.fa.fa-envelope-o
               span.screen-reader E-Mail Address
               img.txt(src='~assets/img/email.png', alt="Email")
-          .form-field.input-group
-            input.caps(name='name', type='text', placeholder='Name' v-validate="{ required: true, regex: /^[a-z,.'-]+\\s?[a-z,.'-]+$/i }" v-model="visitor.name" @focus='checkField' @blur='checkField')
-            label Name
-          .form-field.input-group
-            input.caps(type="phone", name="phone", id="visitor-phone", v-model="visitor.phone", v-validate="{ required: false, regex: /^(?:1|1 )*(\\([2-9]{1}\\d{2}\\)|[2-9]{1}\\d{2})[- ]*(\\d{3})[- ]*(\\d{4})$/ }" @focus='checkField' @blur='checkField')
-            label Phone Number
-          .form-field.input-group
-            input(name='email', type='email', placeholder='Email Address' formnovalidate="true" v-validate="'required|email'" v-model="visitor.email" @focus='checkField' @blur='checkField')
-            label Email Address
-          .form-field.input-group
-            textarea(name='message', rows='5', placeholder='Message' v-model="visitor.message" v-validate="{ required: true, min:10 }" @focus='checkField' @blur='checkField')
-            label Message
-          ul.unstyle.is-danger(v-if="errors.items.length >0 && showErrors")
-            li.error-item(v-for="error in errors.items")
-              p.is-danger.help {{ error.msg }}
-          #status-message
-            p {{ status }}
+          v-text-field(v-model='visitor.name', v-validate="'required|max:40'", :counter='40', :error-messages="errors.collect('name')", label='Name', data-vv-name='name', required='' outlined="")
+          v-text-field(v-model='visitor.phone', v-validate="{ required: false, regex: /^(?:1|1 )*(\\([2-9]{1}\\d{2}\\)|[2-9]{1}\\d{2})[- ]*(\\d{3})[- ]*(\\d{4})$/ }", :error-messages="errors.collect('phone')", label='Phone', data-vv-name='phone', required='' outlined="")
+          v-text-field(v-model='visitor.email', v-validate="'required|email'", :error-messages="errors.collect('email')", label='E-mail', data-vv-name='email', required='' outlined="")
+          v-textarea(v-model='visitor.message', v-validate="'required|min:10'", :error-messages="errors.collect('message')", label='Message',name='input-7-4', data-vv-name='message', required='' outlined="")
           button#submit(type='submit' @click="validateForm") Send
 </template>
 
@@ -106,12 +93,15 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 $rvt-dealer-bp-max: $bp-sm;
 $formRed: $dk-red;
 form label {
   font-family: $fontHead;
   letter-spacing: 1px;
+  font-size: 2.7rem;
+  padding: 0 5px;
+  overflow: visible;
 }
 .contact-info {
   position: relative;
@@ -143,66 +133,6 @@ form label {
     content: '*';
     position: relative;
     padding-right: 0.25em;
-  }
-}
-
-/* input,
-textarea,
-select {
-  &.invalid,
-  &[aria-invalid="true"] {
-    border-color: $formRed;
-  }
-} */
-
-input[type='phone'] {
-  display: block;
-  margin-right: auto;
-}
-
-input[type='radio'] {
-  + label {
-  }
-  @media (max-width: $bp-md) {
-    display: none;
-    + label {
-      font-size: 0.95em;
-      margin: 0 15px 15px 0;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      &:before {
-        margin-right: 0.35em;
-        border-radius: 2px;
-        border: 1px solid $dk-gray;
-        background: $gray;
-        width: 18px;
-        height: 18px;
-        position: relative;
-        content: '';
-      }
-    }
-    &:checked + label {
-      font-weight: bold;
-      &:before {
-        background: #fff;
-        border: 6px solid $blue;
-      }
-    }
-  }
-  @media (min-width: $bp-sm) {
-    display: none;
-    + label {
-      display: inline-block;
-      border: 0.5px solid #333;
-      margin: 5px 10px 5px 0;
-      padding: 3px 20px;
-      border-radius: 5px;
-    }
-    &:checked + label {
-      color: white;
-      background: $aqua;
-    }
   }
 }
 
