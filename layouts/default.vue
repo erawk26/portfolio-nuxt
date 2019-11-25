@@ -1,43 +1,37 @@
 <template lang="pug">
   v-app
-    v-navigation-drawer(v-model='drawer', app='')
-      v-list.nav-main.menu--main.unstyle(dense='')
-        v-list-item(v-for='(item, i) in menus.main' :key='i' :class='{ active: $route.path == item.to }' class="nav-item" link='' @click.stop='drawer = false')
-          nuxt-link.flex.center.uc(:to="item.to")
-            v-list-item-action
-              v-icon {{item.icon}}
-            v-list-item-content
-              v-list-item-title {{item.title}}
-        v-list-item.file-item
-          a.flex.center.uc(href='./ErikOlsen_Resume.pdf' target='_blank')
-            v-list-item-action  
-              v-icon picture_as_pdf
-            v-list-item-content
-              v-list-item-title Resume
-    v-app-bar(app='', color='white', dark='')
-      button.hamburger.hamburger--arrowalt(type='button' @click.stop='drawer = !drawer' :class="{'is-active':drawer}")
-        span.hamburger-box
-          span.hamburger-inner.fill.dk-gray
-      v-toolbar-title.color.blk EO
-    //v-navigation-drawer(floating permanent)
-      ul.nav-main.menu--main.unstyle
-        li.nav-item(v-for='(item, i) in menus.main' :key='i' :class='{ active: $route.path == item.to }')
-          nuxt-link.flex.inline.a-center.j-start.left.unstyle(:to='item.to' router='')
-            i.material-icons {{ item.icon }}
-            span.uc.menu-title(v-text='item.title')
-        // <li class="flex-spacer" />
-        li.file-item.flex.inline.a-center.j-end.left.unstyle
-          a.flex.j-end.right-text(href='./ErikOlsen_Resume.pdf' target='_blank')
-            i.material-icons picture_as_pdf
-            span.uc.menu-title Resume
+    v-hover
+      template(v-slot="{hover}")
+        v-navigation-drawer.abs.left.top(
+          v-model="drawer"
+          :mini-variant="!hover"
+          permanent='' floating="" :class='{ hover: hover }')
+          v-list.nav-main.menu--main.unstyle(dense='')
+            v-list-item.nav-item.flex-wrap(v-for='(item, i) in menus.main' :key='i' :class='{ active: $route.path == item.to }' link='')
+              nuxt-link.flex.center.uc(:to="item.to")
+                v-list-item-action
+                  v-icon {{item.icon}}
+                v-list-item-content
+                  v-list-item-title.title() {{item.title}}
+              v-list.submenu(:class="{expanded:item.submenu && $route.path == item.to}")
+                v-list-item.nav-item(v-for='(subitem, j) in item.submenu' :key='"submenu-"+i+"--"+j' :class='{ active: $route.path == item.to }' link='')
+                  nuxt-link.flex.center.uc(:to="subitem.to")
+                    v-list-item-content
+                      v-list-item-title.title() {{subitem.title}}
+            v-list-item.file-item(link="")
+              a.flex.center.uc(href='./ErikOlsen_Resume.pdf' target='_blank')
+                v-list-item-action  
+                  v-icon picture_as_pdf
+                v-list-item-content
+                  v-list-item-title.title Resume
     v-content.scrolled.fill.wht(:class='scrolled' tag="div")
-      v-container(fluid @click.stop='drawer = false')
+      v-container(fluid)
         nuxt
       transition(name='fade')
         button#back-to-top.unstyle.back-to-top.flex.center(@click="$vuetify.goTo('#app')" v-if="scrolled != 'top'")
           span.screen-reader Back to Top
           i.fa.fa-caret-up.fa-2x
-    v-footer#sticky-footer
+    v-footer#sticky-footer.white
       .max-pg-width.flex.center.wrap
         .cell.copy
           sub &copy; 2015-{{ year }}. Made by Erik Olsen
@@ -103,6 +97,41 @@ export default {
 }
 </script>
 <style lang="scss">
+@import '~/assets/scss/_atomic.scss';
+@import '~/assets/scss/_animations.scss';
+@import '~/assets/scss/_global.scss';
+aside {
+  z-index: 120;
+  &.theme--light.v-navigation-drawer {
+    background: transparent;
+    transition: all 200ms ease;
+    .v-list-item {
+      padding: 0 20px;
+    }
+    .v-list-item--link {
+      // padding-left: 0;
+    }
+    .v-list-item__action {
+      margin-right: 15px;
+      i {
+        font-size: 3rem;
+      }
+    }
+
+    .submenu {
+      display: none;
+      .v-list-item {
+        min-height: 30px;
+      }
+    }
+    &.hover {
+      .submenu.expanded {
+        display: block;
+      }
+      background: rgba($white, 0.8);
+    }
+  }
+}
 .nav-main {
   &.max-pg-width {
     margin: 0 auto;
@@ -112,7 +141,7 @@ export default {
       text-decoration: none;
       border-bottom: none;
       font-family: $fontHead;
-      font-size: 2.4rem;
+      // font-size: 2.4rem;
       line-height: 1;
       @include textLink($link-color-normal, $link-color-active);
       position: relative;
@@ -152,26 +181,31 @@ export default {
     }
   }
 }
-.file-item a {
-  flex: 0;
-}
-.nav-item,
-.file-item {
-  padding: 5px 10px;
-  // .menu-title {
-  //   display: initial;
-  // }
-  // .material-icons {
-  //   display: none;
-  // }
-  // @include mobile {
-  //   .menu-title {
-  //     display: none;
-  //   }
-  //   .material-icons {
-  //     display: initial;
-  //   }
-  // }
+.menu--main {
+  .file-item a {
+    // flex: 0;
+  }
+  .nav-item,
+  .file-item {
+    a {
+      font-size: 1.6rem;
+    }
+    // padding: 5px 10px;
+    // .menu-title {
+    //   display: initial;
+    // }
+    // .material-icons {
+    //   display: none;
+    // }
+    // @include mobile {
+    //   .menu-title {
+    //     display: none;
+    //   }
+    //   .material-icons {
+    //     display: initial;
+    //   }
+    // }
+  }
 }
 .scrolled:not(.top) .navigation-drawer {
   z-index: 100;

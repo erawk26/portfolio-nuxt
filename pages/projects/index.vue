@@ -37,15 +37,28 @@ export default {
   width: 100%;
   height: 100%;
   padding: 5%;
-  .flex-grid {
-    li {
-      .ar .abs-center {
-        width: 100%;
-        height: 100%;
-      }
-      .card-front .content {
-        border-top: 4px solid $dk-green;
-      }
+  li {
+    .ar .abs-center {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .flip-card {
+    .headline {
+      font-size: 2.2rem;
+      margin: 0;
+      line-height: 1.2;
+    }
+    .content {
+      padding: 1.5rem 2rem;
+      width: 100%;
+    }
+    .col {
+      padding: 0;
+    }
+
+    .card-front .content {
+      border-top: 4px solid $dk-green;
     }
   }
 }

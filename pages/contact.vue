@@ -94,6 +94,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~/assets/scss/_forms.scss';
 $rvt-dealer-bp-max: $bp-sm;
 $formRed: $dk-red;
 form label {

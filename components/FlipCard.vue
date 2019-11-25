@@ -9,8 +9,8 @@
         .content.flex.col.a-center.j-start.fill.dk-green.center-text
           h4.headline.uc.color.wht.text-shadow {{project.title}}
           ul.flex.center.wrap.unstyle.cell.omega
-            li.skill.fill.dk-gray(v-for="(skill, i) in project.skills")
-              span.color.wht {{skill}}
+            li.skill(v-for="(skill, i) in project.skills")
+              v-chip.ma-1(color="charcoal" text-color="white") {{skill}}
 </template>
 <script>
 import { gsap } from 'gsap'
@@ -67,25 +67,11 @@ export default {
 }
 </script>
 <style lang="scss">
-.img {
-  width: 100%;
-}
-.headline {
-  font-size: 2.2rem;
-  margin: 0;
-  line-height: 1.2;
-}
-.col {
-  padding: 0;
-}
-.card-back .content {
-  height: 100%;
-}
-.card-front .content {
-  flex: 1 0 55px;
-}
 /// FLIP ANIMATION STYLING GOES UNDER HERE ///
 .flip-card article {
+  .img {
+    width: 100%;
+  }
   overflow: visible;
   display: block;
   position: absolute;
@@ -93,10 +79,6 @@ export default {
   height: 100%;
   .card-front,
   .card-back {
-    .content {
-      padding: 1.5rem 2rem;
-      width: 100%;
-    }
     position: absolute;
     width: 100%;
     height: 100%;
@@ -110,6 +92,12 @@ export default {
       left: 0;
       z-index: 0;
     }
+  }
+  .card-back .content {
+    height: 100%;
+  }
+  .card-front .content {
+    flex: 1 0 55px;
   }
 }
 </style>

@@ -1,4 +1,10 @@
 import projects from '~/assets/js/projects.js'
+const projectMenu = Object.keys(projects.jobs).map((p) => ({
+  external: false,
+  icon: null,
+  to: '/projects/' + p,
+  title: projects.jobs[p]['title']
+}))
 export const state = () => ({
   projects: { ...projects.jobs },
   menus: {
@@ -11,7 +17,8 @@ export const state = () => ({
       {
         icon: 'work',
         title: 'Projects',
-        to: '/projects'
+        to: '/projects',
+        submenu: [...projectMenu]
       },
       {
         icon: 'mail_outline',
@@ -51,12 +58,7 @@ export const state = () => ({
         title: 'CodePen'
       }
     ],
-    projects: Object.keys(projects.jobs).map((p) => ({
-      external: false,
-      icon: null,
-      to: '/projects/' + p,
-      title: projects.jobs[p]['title']
-    }))
+    projects: [...projectMenu]
   }
 })
 

@@ -15,9 +15,9 @@
           i.fa.fa-2x.fa-list
         nuxt-link(:to="looper(1)")
           i.fa.fa-2x.fa-chevron-right
-      ul.flex.wrap.unstyle
-        v-chip.ma-2.skill(v-for="(skill, i) in project.skills" :color="'#37474F'" :key="'skill-'+i+1" ripple)
-          span.color.wht {{skill}}
+      ul.flex.wrap.unstyle.skills
+        li(v-for="(skill, i) in project.skills" :key="'skill-'+i+1") 
+          v-chip.ma-1.skill(color="charcoal" text-color="white" ripple) {{skill}}
 </template>
 <script>
 import Link from '~/components/Link.vue'
@@ -72,9 +72,9 @@ export default {
 }
 </script>
 <style lang="scss">
-.skill {
+.skills li {
+  @include marding;
   font-size: 0.8em;
-  @include marding(0 5px 5px 0, 8px);
 }
 .project-container {
   @include set-max-width;

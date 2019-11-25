@@ -1,9 +1,7 @@
 <template lang="pug">
   section.intro
     .wrapper.flex.col.center
-      img.headshot.add-bottom.elevation-5(
-        src='~/assets/img/headshot2.jpg'
-        alt="Erik Olsen")
+      v-card.headshot.add-bottom(img='./img/headshot2.jpg' elevation="5" title="Erik Olsen" shaped)
       p I'm Erik Olsen, a Web Developer currently based out of Sarasota, FL. I build fast responsive websites and applications.
       router-link.material-icons.next.add-top.unstyle(to="/projects") expand_more
 </template>

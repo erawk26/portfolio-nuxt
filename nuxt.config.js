@@ -59,15 +59,24 @@ export default {
         theme: {
           themes: {
             light: {
-              primary: '#fff',
-              secondary: '#000',
-              accent: '#206634',
-              error: colors.red.accent3
+              primary: colors.red.darken1, // #E53935
+              secondary: colors.red.lighten4, // #FFCDD2
+              cream: '#f1e0c5',
+              tan: '#c9b79c',
+              dkGreen: '#3b8070',
+              charcoal: '#342a21',
+              dkRed: '#720015'
             },
             dark: {
               primary: colors.blue.lighten3
             }
           }
+        },
+        defaultAssets: {
+          font: {
+            family: 'Libre Baskerville'
+          },
+          icons: 'mdi'
         }
       }
     ],
@@ -81,7 +90,10 @@ export default {
   },
   styleResources: {
     // your settings here
-    sass: ['~assets/scss/style.scss'] // alternative: scss
+    scss: ['~/assets/scss/_init.scss'] // alternative: scss
+  },
+  vuetify: {
+    customVariables: ['~/assets/scss/_vuetify.scss']
   },
   /*
    ** Build configuration
@@ -90,6 +102,6 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    // extend(config, ctx) {}
   }
 }
