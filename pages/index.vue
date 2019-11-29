@@ -2,7 +2,7 @@
   section.intro
     .wrapper.flex.col.center
       v-avatar.add-bottom.headshot(size='200px')
-        img.img-circle.elevation-7.mb-1(src='/img/headshot2.jpg' title="Erik Olsen")
+        img.img-circle.elevation-7.mb-1(src='./img/headshot2.jpg' title="Erik Olsen")
       p I'm Erik Olsen, a Web Developer currently based out of Sarasota, FL. I build fast responsive websites and applications.
       router-link.material-icons.next.add-top.unstyle(to="/projects") expand_more
 </template>
