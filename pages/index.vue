@@ -1,7 +1,8 @@
 <template lang="pug">
   section.intro
     .wrapper.flex.col.center
-      v-card.headshot.add-bottom(img='./img/headshot2.jpg' elevation="5" title="Erik Olsen" shaped)
+      v-avatar.add-bottom.headshot(size='200px')
+        img.img-circle.elevation-7.mb-1(src='/img/headshot2.jpg' title="Erik Olsen")
       p I'm Erik Olsen, a Web Developer currently based out of Sarasota, FL. I build fast responsive websites and applications.
       router-link.material-icons.next.add-top.unstyle(to="/projects") expand_more
 </template>
@@ -52,13 +53,12 @@ section.intro {
     }
   }
   .headshot {
-    border-radius: 50%;
     // box-shadow: -3px 3px 7px 0 rgba(black, 0.4);
     transform: scaleX(-1) rotate(8deg);
     // filter: drop-shadow(1px 1px 4px rgba($black, 0.6));
-    width: 250px;
-    height: 250px;
-    display: block;
+    // width: 250px;
+    // height: 250px;
+    // display: block;
     //border: 0.45em solid #fff;
     //border: 0.45em solid rgba(white, 0.75);
     // z-index: 9;

@@ -1,7 +1,11 @@
 <template>
   <div class="max-pg-width cards">
-    <ul class="unstyle flex wrap flex-grid">
-      <li v-for="project in projects" :key="project.id" class="col-sm-6">
+    <ul class="unstyle d-flex flex-wrap">
+      <li
+        v-for="project in projects"
+        :key="project.id"
+        class="col-sm-6 col-lg-4"
+      >
         <v-hover>
           <template v-slot="{ hover }">
             <Project :project="project" :hover="hover"></Project>
@@ -36,7 +40,9 @@ export default {
 .cards {
   width: 100%;
   height: 100%;
-  padding: 5%;
+  @media (max-width: $bp-lg - 1) {
+    padding: 0 30px;
+  }
   li {
     .ar .abs-center {
       width: 100%;

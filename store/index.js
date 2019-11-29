@@ -10,51 +10,60 @@ export const state = () => ({
   menus: {
     main: [
       {
+        external: false,
         icon: 'home',
         title: 'Intro',
         to: '/'
       },
       {
+        external: false,
         icon: 'work',
         title: 'Projects',
         to: '/projects',
         submenu: [...projectMenu]
       },
       {
+        external: false,
         icon: 'mail_outline',
         title: 'Contact',
         to: '/contact'
+      },
+      {
+        external: true,
+        icon: 'picture_as_pdf',
+        title: 'Resume',
+        href: './ErikOlsen_Resume.pdf'
       }
     ],
     footer: [
       {
         external: false,
-        icon: 'envelope-o',
+        icon: 'mail_outline',
         to: '/contact',
         title: 'me@erikthedeveloper.com'
       },
       {
         external: false,
-        icon: 'phone',
+        icon: 'mdi-phone',
         to: '/contact',
         title: '+1-802-851-5512'
       },
       {
         external: true,
-        icon: 'linkedin',
-        to: 'https://www.linkedin.com/in/erikthedeveloper',
+        icon: 'mdi-linkedin-box',
+        href: 'https://www.linkedin.com/in/erikthedeveloper',
         title: 'LinkedIn'
       },
       {
         external: true,
-        icon: 'github',
-        to: 'https://github.com/erawk26',
+        icon: 'mdi-github-circle',
+        href: 'https://github.com/erawk26',
         title: 'GitHub'
       },
       {
         external: true,
-        icon: 'codepen',
-        to: 'https://codepen.io/erawk26',
+        icon: 'mdi-codepen',
+        href: 'https://codepen.io/erawk26',
         title: 'CodePen'
       }
     ],

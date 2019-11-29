@@ -1,55 +1,29 @@
 <template lang="pug">
   v-app
-    v-hover
-      template(v-slot="{hover}")
-        v-navigation-drawer.abs.left.top(
-          v-model="drawer"
-          :mini-variant="!hover"
-          permanent='' floating="" :class='{ hover: hover }')
-          v-list.nav-main.menu--main.unstyle(dense='')
-            v-list-item.nav-item.flex-wrap(v-for='(item, i) in menus.main' :key='i' :class='{ active: $route.path == item.to }' link='')
-              nuxt-link.flex.center.uc(:to="item.to")
-                v-list-item-action
-                  v-icon {{item.icon}}
-                v-list-item-content
-                  v-list-item-title.title() {{item.title}}
-              v-list.submenu(:class="{expanded:item.submenu && $route.path == item.to}")
-                v-list-item.nav-item(v-for='(subitem, j) in item.submenu' :key='"submenu-"+i+"--"+j' :class='{ active: $route.path == item.to }' link='')
-                  nuxt-link.flex.center.uc(:to="subitem.to")
-                    v-list-item-content
-                      v-list-item-title.title() {{subitem.title}}
-            v-list-item.file-item(link="")
-              a.flex.center.uc(href='./ErikOlsen_Resume.pdf' target='_blank')
-                v-list-item-action  
-                  v-icon picture_as_pdf
-                v-list-item-content
-                  v-list-item-title.title Resume
+    v-navigation-drawer.nav-main.menu--main.unstyle(left fixed expand-on-hover :mini-variant.sync="isMini" :mini-variant-width="50" permanent floating)
+      my-menu(type="dropdown" dir="flex-column" :menu="menus.main" :parentState="isMini")
     v-content.scrolled.fill.wht(:class='scrolled' tag="div")
       v-container(fluid)
         nuxt
       transition(name='fade')
         button#back-to-top.unstyle.back-to-top.flex.center(@click="$vuetify.goTo('#app')" v-if="scrolled != 'top'")
           span.screen-reader Back to Top
-          i.fa.fa-caret-up.fa-2x
-    v-footer#sticky-footer.white
-      .max-pg-width.flex.center.wrap
+          v-icon(large) expand_less
+    v-footer.white(padless)
+      v-card.max-pg-width.d-flex.align-center.justify-start.flex-wrap.px-2(tile elevation="0")
         .cell.copy
           sub &copy; 2015-{{ year }}. Made by Erik Olsen
         .cell
-          ul.nav-social.menu--contact.flex.row.center.unstyle
-            li(v-for='(item, i) in menus.footer' :key='i' :class='{ active: $route.path == item.to }')
-              nuxt-link.flex.inline.a-center.j-start.left.unstyle(v-if='!item.external' :to='item.to' :title='item.title')
-                i.fa(:class="'fa-' + item.icon")
-                  span.screen-reader(v-text='item.title')
-              a.flex.inline.a-center.j-start.left.unstyle(v-else='' :href='item.to' :title='item.title' target='_blank')
-                i.fa(:class="'fa-' + item.icon")
-                  span.screen-reader(v-text='item.title')
+          my-menu.nav-footer.menu--footer.justify-start(:menu="menus.footer" :hide-text='true')
 </template>
 <script>
+import Menu from '../components/Menu.vue'
 export default {
+  components: { 'my-menu': Menu },
   data() {
     return {
-      drawer: false,
+      isMini: true,
+      // submenuOpen:false,
       scrolled: 'top'
     }
   },
@@ -61,10 +35,16 @@ export default {
       return new Date().getFullYear()
     }
   },
+  watch: {
+    isMini: function() {}
+  },
   mounted() {
     window.addEventListener('scroll', this.debounce(this.onScroll, 200))
   },
   methods: {
+    childRoute(href) {
+      return this.$route.path.split('/').includes(href.replace('/', ''))
+    },
     onScroll: function() {
       const threshhold = 100
       if (window.pageYOffset < threshhold) {
@@ -101,35 +81,60 @@ export default {
 @import '~/assets/scss/_animations.scss';
 @import '~/assets/scss/_global.scss';
 aside {
-  z-index: 120;
-  &.theme--light.v-navigation-drawer {
-    background: transparent;
+  z-index: 220;
+  &.v-navigation-drawer {
+    &.v-navigation-drawer--fixed {
+      z-index: 20;
+    }
+    &.theme--light,
+    &.theme--dark {
+      background: transparent;
+    }
     transition: all 200ms ease;
     .v-list-item {
-      padding: 0 20px;
+      // padding: 0 20px;
     }
-    .v-list-item--link {
-      // padding-left: 0;
+    .v-list > a.nav-item {
+      padding-left: 0;
+      padding-right: 0;
+      .v-list-group {
+        max-width: 100%;
+      }
     }
+    .v-list-item__icon,
     .v-list-item__action {
-      margin-right: 15px;
       i {
         font-size: 3rem;
       }
     }
-
-    .submenu {
-      display: none;
-      .v-list-item {
-        min-height: 30px;
+    .v-navigation-drawer__border {
+      border-right: 0 solid transparent;
+      transition: border-color 200ms ease;
+    }
+    &.v-navigation-drawer--is-mouseover {
+      > .v-navigation-drawer__border {
+        border-color: $black;
+        border-width: 1px;
+      }
+      &.theme--dark {
+        background: rgba($black, 0.8);
+      }
+      &.theme--light {
+        background: rgba($white, 0.8);
       }
     }
-    &.hover {
-      .submenu.expanded {
-        display: block;
-      }
-      background: rgba($white, 0.8);
-    }
+  }
+}
+footer > .v-card {
+  width: 100%;
+}
+.nav-footer {
+  .v-list-item__action {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  a.nav-item.v-list-item--link {
+    padding: 0 6px;
   }
 }
 .nav-main {
@@ -163,7 +168,7 @@ aside {
     }
     &:first-child,
     &:last-child {
-      flex: 1;
+      // flex: 1;
     }
     &:hover,
     &.active {
@@ -188,7 +193,7 @@ aside {
   .nav-item,
   .file-item {
     a {
-      font-size: 1.6rem;
+      // font-size: 1.6rem;
     }
     // padding: 5px 10px;
     // .menu-title {
@@ -209,7 +214,7 @@ aside {
 }
 .scrolled:not(.top) .navigation-drawer {
   z-index: 100;
-  top: -46px;
+  top: -60px;
   left: 0;
   width: 100%;
   transform: translateY(45px);

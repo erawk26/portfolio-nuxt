@@ -1,7 +1,9 @@
 <template>
   <section class="projects add-top">
     <div class="wrapper flex col a-center">
-      <nuxt-child />
+      <transition name="fade" mode="out-in">
+        <nuxt-child />
+      </transition>
     </div>
   </section>
 </template>

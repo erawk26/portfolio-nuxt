@@ -1,7 +1,7 @@
-import colors from 'vuetify/lib/util/colors'
+// import colors from 'vuetify/lib/util/colors'
 export default {
   router: {
-    base: '/portfolio-nuxt/'
+    // base: '/portfolio-nuxt/'
   },
   mode: 'universal',
   /*
@@ -29,11 +29,6 @@ export default {
         rel: 'stylesheet',
         href:
           'https://fonts.googleapis.com/css?family=Libre+Baskerville|Yanone+Kaffeesatz|Material+Icons'
-      },
-      {
-        rel: 'stylesheet',
-        href:
-          'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
       }
     ]
   },
@@ -58,17 +53,27 @@ export default {
       {
         theme: {
           themes: {
-            light: {
-              primary: colors.red.darken1, // #E53935
-              secondary: colors.red.lighten4, // #FFCDD2
-              cream: '#f1e0c5',
-              tan: '#c9b79c',
-              dkGreen: '#3b8070',
-              charcoal: '#342a21',
-              dkRed: '#720015'
-            },
             dark: {
-              primary: colors.blue.lighten3
+              primary: '#263238',
+              accent: '#C67171',
+              secondary: '#26A5B5',
+              success: '#4CAF50',
+              info: '#2196F3',
+              warning: '#FB8C00',
+              error: '#FF5252',
+              dkGreen: '#3b8070',
+              charcoal: '#342a21'
+            },
+            light: {
+              primary: '#757575',
+              accent: '#F44336',
+              secondary: '#0277BD',
+              success: '#4CAF50',
+              info: '#2196F3',
+              warning: '#FB8C00',
+              error: '#FF5252',
+              dkGreen: '#3b8070',
+              charcoal: '#342a21'
             }
           }
         },
