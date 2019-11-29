@@ -2,7 +2,7 @@
   section.contact
     .wrapper.flex.center
       .form-container
-        form#contactForm.color.blk
+        v-form#contactForm.color.blk
           h2 Drop me a Note!
           .flex.wrap.contact-info
             .cell.flex.a-center.inline.fa.fa-phone.color.blk
