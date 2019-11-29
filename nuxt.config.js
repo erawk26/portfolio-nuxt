@@ -48,49 +48,11 @@ export default {
    ** Nuxt.js modules
    */
   modules: [
-    [
-      '@nuxtjs/style-resources',
-      'nuxt-validate',
-      '@nuxtjs/eslint-module',
-      '@nuxtjs/google-analytics',
-      [
-        '@nuxtjs/vuetify',
-        {
-          theme: {
-            themes: {
-              dark: {
-                primary: '#263238',
-                accent: '#C67171',
-                secondary: '#26A5B5',
-                success: '#4CAF50',
-                info: '#2196F3',
-                warning: '#FB8C00',
-                error: '#FF5252',
-                dkGreen: '#3b8070',
-                charcoal: '#342a21'
-              },
-              light: {
-                primary: '#757575',
-                accent: '#F44336',
-                secondary: '#0277BD',
-                success: '#4CAF50',
-                info: '#2196F3',
-                warning: '#FB8C00',
-                error: '#FF5252',
-                dkGreen: '#3b8070',
-                charcoal: '#342a21'
-              }
-            }
-          },
-          defaultAssets: {
-            font: {
-              family: 'Libre Baskerville'
-            },
-            icons: 'mdi'
-          }
-        }
-      ]
-    ]
+    '@nuxtjs/vuetify',
+    'nuxt-validate',
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/google-analytics',
+    '@nuxtjs/style-resources'
   ],
   googleAnalytics: {
     id: 'UA-115116018-1'
@@ -100,7 +62,8 @@ export default {
     scss: ['~/assets/scss/_init.scss'] // alternative: scss
   },
   vuetify: {
-    customVariables: ['~/assets/scss/_vuetify.scss']
+    customVariables: ['~/assets/scss/_vuetify.scss'],
+    optionsPath: './vuetify.config.js'
   },
   /*
    ** Build configuration
