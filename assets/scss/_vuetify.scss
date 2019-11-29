@@ -7,6 +7,10 @@ $yanone-font: 'Yanone Kaffeesatz', #{$sans-serif-stack};
 $libre-font: 'Libre Baskerville', #{$serif-stack};
 $body-font-family: $yanone-font;
 $heading-font-family: $libre-font;
+.v-application .title{
+    font-family: $heading-font-family;
+}
 $font-size-root: 16px !default;
 $line-height-root: 1.5 !default;
 $border-radius-root: 4px !default;
+@import '/vuetify/src/styles/styles.sass';

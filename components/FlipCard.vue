@@ -1,9 +1,9 @@
 <template lang="pug">
-  nuxt-link.flip-card.flex.wrap.a-start.ar.seven-five.rel(:to="'/projects/'+project.id")
+  nuxt-link.flip-card.flex.wrap.a-start.ar.rel(:to="'/projects/'+project.id" :class="$vuetify.breakpoint.smAndUp?'seven-five':'square'")
     article
       v-card.card-front.abs-center.flex.col.center(ripple :elevation="hover?5:10")
-        v-img.img(:src="require('~/assets/img/'+project.img)" aspect-ratio="1.777")
-        .content.flex-grow.left-text
+        v-img.img.flex-grow(:src="require('~/assets/img/'+project.img)")
+        .content.left-text
           h3.headline.uc {{project.title}}
       v-card.card-back.abs-center(ripple :elevation="hover?5:10")
         .content.flex.col.a-center.j-start.fill.dk-green.center-text
@@ -71,6 +71,7 @@ export default {
 .flip-card article {
   .img {
     width: 100%;
+    flex: 1 0 calc(100% - 55px);
   }
   overflow: visible;
   display: block;
@@ -95,9 +96,6 @@ export default {
   }
   .card-back .content {
     height: 100%;
-  }
-  .card-front .content {
-    flex: 1 0 55px;
   }
 }
 </style>

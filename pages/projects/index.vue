@@ -40,9 +40,6 @@ export default {
 .cards {
   width: 100%;
   height: 100%;
-  @media (max-width: $bp-lg - 1) {
-    padding: 0 30px;
-  }
   li {
     .ar .abs-center {
       width: 100%;

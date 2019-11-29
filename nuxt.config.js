@@ -49,7 +49,6 @@ export default {
    */
   modules: [
     '@nuxtjs/vuetify',
-    'nuxt-validate',
     '@nuxtjs/eslint-module',
     '@nuxtjs/google-analytics',
     '@nuxtjs/style-resources'
