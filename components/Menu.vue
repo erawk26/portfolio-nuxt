@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-list.d-flex(:dense="true" :class="dir")
+  v-list(:dense="true" :color="color")
     v-list-item.nav-item.uc(v-for='(item, i) in menu' :key='i' :to="item.to" :href="item.href" link :nuxt="!item.external" :target="item.external?'_blank':'_self'" :title="item.title")
       template(v-if="type!=='dropdown'")  
         v-list-item-action(:class="{'no-text':hideText }")
@@ -26,6 +26,10 @@ export default {
       type: String,
       default: 'flat'
     },
+    color: {
+      type: String,
+      default: 'transparent'
+    },
     hideText: {
       type: Boolean,
       default: false
@@ -33,14 +37,10 @@ export default {
     parentState: {
       type: Boolean,
       default: false
-    },
-    dir: {
-      type: String,
-      default: 'flex-row'
     }
   },
   watch: {
-    parentState: (newV, oldV) => console.log(newV, oldV)
+    // parentState: (newV, oldV) => //console.log(newV, oldV)
   }
 }
 </script>

@@ -30,7 +30,7 @@ export const state = () => ({
       },
       {
         external: true,
-        icon: 'picture_as_pdf',
+        icon: 'mdi-file-pdf',
         title: 'Resume',
         href: './ErikOlsen_Resume.pdf'
       }
@@ -41,12 +41,6 @@ export const state = () => ({
         icon: 'mail_outline',
         to: '/contact',
         title: 'me@erikthedeveloper.com'
-      },
-      {
-        external: false,
-        icon: 'mdi-phone',
-        to: '/contact',
-        title: '+1-802-851-5512'
       },
       {
         external: true,
@@ -65,6 +59,12 @@ export const state = () => ({
         icon: 'mdi-codepen',
         href: 'https://codepen.io/erawk26',
         title: 'CodePen'
+      },
+      {
+        external: true,
+        icon: 'mdi-instagram',
+        href: 'https://www.instagram.com/erikthedeveloper',
+        title: 'Instagram'
       }
     ],
     projects: [...projectMenu]

@@ -1,6 +1,6 @@
 <template>
   <section class="projects px-5 add-top">
-    <div class="wrapper flex col a-center">
+    <div class="wrapper d-flex flex-column justify-start">
       <transition name="fade" mode="out-in">
         <nuxt-child />
       </transition>
@@ -11,8 +11,8 @@
 <script>
 export default {
   transition(to, from) {
-    if (!from) return 'slide-left'
-    return +to.query.page < +from.query.page ? 'slide-right' : 'slide-left'
+    if (!from) return 'slide-up'
+    return +to.query.page < +from.query.page ? 'slide-down' : 'slide-up'
   },
   components: {}
 }

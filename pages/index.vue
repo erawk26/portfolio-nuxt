@@ -1,86 +1,48 @@
 <template lang="pug">
-  section.intro
-    .wrapper.flex.col.center
-      v-avatar.add-bottom.headshot(size='200px')
-        img.img-circle.elevation-7.mb-1(src='~/assets/img/headshot2.jpg' title="Erik Olsen")
-      p I'm Erik Olsen, a Web Developer currently based out of Sarasota, FL. I build fast responsive websites and applications.
-      router-link.material-icons.next.add-top.unstyle(to="/projects") expand_more
+  section.intro.d-flex.flex-column.align-center.justify-center
+    v-avatar.headshot(size='200px')
+        img.img-circle.elevation-4.mb-1(src='~/assets/img/headshot2.jpg' title="Erik Olsen")
+    v-card.px-5.mx-5.center-text.avatar-padding(color="blue-grey lighten-5" elevation="6" :max-width="400")
+      h4.charcoal--text Erik Olsen
+      h6.charcoal--text Web Developer / Programmer
+      p.charcoal--text Hey there, Lets build things together! My passion is creating fast responsive websites and applications. I'm currently based out of Sarasota, FL and Aiken, SC. 
+      nuxt-link.material-icons.mx-1.charcoal--text(large to="/projects") expand_more
+      my-menu.nav-social.menu--social.d-flex.justify-space-between.text-center(:menu="cardMenu" :hide-text='true')
 </template>
 
 <script>
+import MyMenu from '~/components/Menu.vue'
 export default {
-  transition(to, from) {
-    if (!from) return 'slide-down'
-    // console.log(to, from)
-    return 'slide-down'
-    // return +to.query.page < +from.query.page ? 'slide-up' : 'slide-down'
-  },
-  components: {},
-  data: () => ({})
+  transition: 'slide-down',
+  // return +to.query.page < +from.query.page ? 'slide-up' : 'slide-down'
+  components: { MyMenu },
+  data: () => ({}),
+  computed: {
+    cardMenu() {
+      return this.$store.state.menus.footer //.slice(1)
+    }
+  }
 }
 </script>
 
 <style lang="scss">
 section.intro {
-  .wrapper {
-    height: 100%;
-    max-height: 700px;
-    letter-spacing: 2px;
-    text-align: center;
-    font-size: 25px;
-    /* // @include flex($direction: column); */
-    line-height: 2;
-    p {
-      font-family: $fontBody;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    @media (max-width: $bp-sm-max) {
-      line-height: 1.5;
-    }
-    @media (max-width: $bp-xs-max) {
-      /* // margin-top: 65px; */
-      p {
-        font-size: 18px;
-        line-height: 1.3;
-        max-width: 100%;
-        padding: 0 5%;
-      }
-      img.headshot {
-        width: 150px;
-        height: 150px;
-      }
+  min-height: 75vh;
+  .avatar-padding {
+    padding-top: 50px;
+  }
+  .v-btn i {
+    margin-right: 0.25em;
+  }
+  .nav-social a {
+    flex: 0;
+    i {
+      color: $charcoal;
     }
   }
   .headshot {
-    // box-shadow: -3px 3px 7px 0 rgba(black, 0.4);
-    transform: scaleX(-1) rotate(8deg);
-    // filter: drop-shadow(1px 1px 4px rgba($black, 0.6));
-    // width: 250px;
-    // height: 250px;
-    // display: block;
-    //border: 0.45em solid #fff;
-    //border: 0.45em solid rgba(white, 0.75);
-    // z-index: 9;
-    @media (max-width: $bp-sm-max) {
-      // margin-bottom: 25px;
-    }
-  }
-}
-
-.fa.fa-chevron-down,
-.next {
-  text-align: center;
-  cursor: pointer;
-  color: rgba(#000, 0.75);
-
-  font-size: 2em;
-  @media (max-width: $bp-sm-max) {
-    font-size: 1.5em;
-  }
-  font-weight: 400;
-  &:hover {
-    text-decoration: none;
+    transform: translateY(60px) scaleX(-1) rotate(8deg);
+    z-index: 1;
   }
 }
 </style>

@@ -1,7 +1,7 @@
 <template lang="pug">
-    a(:href="href" :target="target" :title="title")
-        i.link-icon.fa(v-if="icon" :class="icon" aria-hidden="true")
-        | {{text}}
+  a(:href="href" :target="target" :title="title")
+    v-icon.link-icon(aria-hidden="true") {{icon}}
+    | {{ text }}
 </template>
 <script>
 export default {

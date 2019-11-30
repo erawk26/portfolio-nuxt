@@ -1,10 +1,9 @@
 <template lang="pug">
   v-app
-    v-navigation-drawer.nav-main.menu--main.unstyle(left fixed expand-on-hover :mini-variant.sync="isMini" :mini-variant-width="50" permanent floating)
+    v-navigation-drawer.nav-main.menu--main.unstyle(v-show="!$vuetify.breakpoint.xsOnly" left fixed expand-on-hover :mini-variant.sync="isMini" :mini-variant-width="50" permanent floating)
       my-menu(type="dropdown" dir="flex-column" :menu="menus.main" :parentState="isMini")
     v-content.scrolled.fill.wht(:class='scrolled' tag="div")
-      v-container(fluid)
-        nuxt
+      nuxt
       transition(name='fade')
         button#back-to-top.unstyle.back-to-top.flex.center(@click="$vuetify.goTo('#app')" v-if="scrolled != 'top'")
           span.screen-reader Back to Top
@@ -14,7 +13,9 @@
         .cell.copy
           sub &copy; 2015-{{ year }}. Made by Erik Olsen
         .cell
-          my-menu.nav-footer.menu--footer.justify-start(:menu="menus.footer" :hide-text='true')
+          my-menu.nav-footer.menu--footer.d-flex.justify-start(:menu="menus.footer" :hide-text='true')
+    v-bottom-navigation(color='deep-purple accent-4' fixed bottom v-show="$vuetify.breakpoint.xsOnly")
+      my-menu.nav-main.menu--main.d-flex.justify-start(:menu="menus.main" :hide-text='true')
 </template>
 <script>
 import Menu from '../components/Menu.vue'
@@ -124,6 +125,9 @@ aside {
       }
     }
   }
+}
+.v-bottom-navigation .nav-main.menu--main i {
+  font-size: 4.5rem;
 }
 footer > .v-card {
   width: 100%;

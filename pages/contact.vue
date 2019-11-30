@@ -11,7 +11,7 @@
             .cell.flex.a-center.inline.fa.fa-envelope-o
               span.screen-reader E-Mail Address
               img.txt(src='~/assets/img/email.png', alt="Email")
-          v-text-field(outlined v-model='visitor.name' :counter='10' :rules='nameRules' label='Name' required='')
+          v-text-field(outlined v-model='visitor.name' :rules='nameRules' label='Name' required)
           v-text-field(outlined v-model='visitor.email' :rules='emailRules' label='E-mail' required)
           v-text-field(outlined v-model='visitor.phone' :rules='phoneRules' label='Phone')
           v-textarea(outlined v-model='visitor.message' :rules='messageRules' label='Message' required)
@@ -24,8 +24,8 @@
 <script>
 export default {
   transition(to, from) {
-    if (!from) return 'slide-down'
-    return +to.query.page < +from.query.page ? 'slide-up' : 'slide-down'
+    if (!from) return 'slide-up'
+    return +to.query.page < +from.query.page ? 'slide-down' : 'slide-up'
   },
   data: () => ({
     visitor: { name: '', email: '', message: '', phone: '' },

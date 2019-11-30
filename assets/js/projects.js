@@ -124,7 +124,7 @@ export default {
             href: 'https://codepen.io/erawk26/pen/LQoXEw',
             title: 'Browse this Codepen example',
             text: 'Codepen Example',
-            icon: 'fa-codepen'
+            icon: 'mdi-codepen'
           }
         ]
       },
@@ -192,7 +192,7 @@ export default {
           href: 'https://github.com/erawk26/portfolio',
           title: 'Browse this GitHub repo',
           text: 'GitHub Repo',
-          icon: 'fa-github'
+          icon: 'mdi-github-circle'
         }
       },
       desc:
