@@ -1,12 +1,13 @@
 <template lang="pug">
   section.intro.d-flex.flex-column.align-center.justify-center
-    v-avatar.headshot(size='200px')
-        img.img-circle.elevation-4.mb-1(src='~/assets/img/headshot2.jpg' title="Erik Olsen")
-    v-card.px-5.mx-5.center-text.avatar-padding(color="blue-grey lighten-5" elevation="6" :max-width="400")
+    v-avatar.headshot(:size="$vuetify.breakpoint.xsOnly?'150px':'210px'")
+      img.img-circle.elevation-4.mb-1(src='~/assets/img/headshot2.jpg' title="Erik Olsen")
+    v-card.px-5.mx-5.center-text.avatar-padding(:color="'blue-grey ' + $vuetify.theme.dark?'darken-5':'lighten-5'" elevation="6" :max-width="400" :min-width="200")
       h4.charcoal--text Erik Olsen
       h6.charcoal--text Web Developer / Programmer
       p.charcoal--text Hey there, Lets build things together! My passion is creating fast responsive websites and applications. I'm currently based out of Sarasota, FL and Aiken, SC. 
-      nuxt-link.material-icons.mx-1.charcoal--text(large to="/projects") expand_more
+      nuxt-link.material-icons.mx-1.charcoal--text(to="/projects")
+        v-icon(large) expand_more
       my-menu.nav-social.menu--social.d-flex.justify-space-between.text-center(:menu="cardMenu" :hide-text='true')
 </template>
 

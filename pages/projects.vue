@@ -1,5 +1,5 @@
 <template>
-  <section class="projects px-5 add-top">
+  <section class="projects px-5 mx-5 add-top">
     <div class="wrapper d-flex flex-column justify-start">
       <transition name="fade" mode="out-in">
         <nuxt-child />

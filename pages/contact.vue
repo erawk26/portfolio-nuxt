@@ -1,14 +1,14 @@
 <template lang="pug">
   section.contact
-    .wrapper.flex.center
+    .wrapper.eo-flex.center
       .form-container
         v-form(ref='form' v-model='valid' lazy-validation='')
           h2 Drop me a Note!
-          .flex.wrap.contact-info
-            .cell.flex.a-center.inline.fa.fa-phone.color.blk
+          .eo-flex.wrap.contact-info
+            .cell.eo-flex.a-center.inline.fa.fa-phone.color.blk
               span.screen-reader Phone Number
               img.txt(src='~/assets/img/phone.png', alt="Phone Number")
-            .cell.flex.a-center.inline.fa.fa-envelope-o
+            .cell.eo-flex.a-center.inline.fa.fa-envelope-o
               span.screen-reader E-Mail Address
               img.txt(src='~/assets/img/email.png', alt="Email")
           v-text-field(outlined v-model='visitor.name' :rules='nameRules' label='Name' required)

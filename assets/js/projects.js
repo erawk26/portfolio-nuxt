@@ -3,7 +3,7 @@ export default {
     tybee: {
       // -----------JOB-tybee-----------
       id: 'tybee',
-      links: { main: { href: 'https://visittybee.com' } },
+      links: { main: { target: '_blank', href: 'https://visittybee.com' } },
       img: 'tybee.png',
       // logo: "tybee-logo.png",
       title: 'Visit Tybee Island',
@@ -20,7 +20,9 @@ export default {
     otis: {
       // -----------JOB-otis-----------
       id: 'otis',
-      links: { main: { href: 'https://www.otisspunkmeyer.com' } },
+      links: {
+        main: { target: '_blank', href: 'https://www.otisspunkmeyer.com' }
+      },
       img: 'otis.jpg',
       logo: 'otis-logo.png',
       title: 'Otis Spunkmeyer',
@@ -38,7 +40,9 @@ export default {
     labrea: {
       // -----------JOB-labrea-----------
       id: 'labrea',
-      links: { main: { href: 'https://www.labreabakery.com/kroger' } },
+      links: {
+        main: { target: '_blank', href: 'https://www.labreabakery.com/kroger' }
+      },
       img: 'labrea.jpg',
       logo: 'labrea-logo.png',
       title: 'La Brea Bakery',
@@ -56,7 +60,12 @@ export default {
     zevia: {
       // -----------JOB-zevia-----------
       id: 'zevia',
-      links: { main: { href: 'https://www.zevia.com/sugar-reduction' } },
+      links: {
+        main: {
+          target: '_blank',
+          href: 'https://www.zevia.com/sugar-reduction'
+        }
+      },
       img: 'zevia.jpg',
       logo: 'zevia-logo.png',
       title: 'Zevia',
@@ -73,7 +82,7 @@ export default {
     hark: {
       // -----------JOB-hark-----------
       id: 'hark',
-      links: { main: { href: 'https://www.hark.bz' } },
+      links: { main: { target: '_blank', href: 'https://www.hark.bz' } },
       img: 'hark.png',
       logo: 'hark-logo.png',
       title: 'Hark Digital',
@@ -91,7 +100,10 @@ export default {
       // -----------JOB-nsb-----------
       id: 'nsb',
       links: {
-        main: { href: 'https://www.nsbvt.com/mortgages/first-time-homebuying' }
+        main: {
+          target: '_blank',
+          href: 'https://www.nsbvt.com/mortgages/first-time-homebuying'
+        }
       },
       img: 'nsb.jpg',
       logo: 'nsb-logo.png',
@@ -134,7 +146,9 @@ export default {
     mbf: {
       // -----------JOB-mbf-----------
       id: 'mbf',
-      links: { main: { href: 'https://www.mbfbioscience.com' } },
+      links: {
+        main: { target: '_blank', href: 'https://www.mbfbioscience.com' }
+      },
       img: 'mbf.jpg',
       logo: 'mbf-logo.png',
       title: 'MBF Bioscience',
@@ -153,7 +167,9 @@ export default {
     foursight: {
       // -----------JOB-4sight-----------
       id: 'foursight',
-      links: { main: { href: 'https://www.go4sight.com/blog' } },
+      links: {
+        main: { target: '_blank', href: 'https://www.go4sight.com/blog' }
+      },
       img: '4sight.jpg',
       logo: '4sight-logo.png',
       title: '4 Sight',

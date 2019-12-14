@@ -76,21 +76,21 @@
   font-size: 5.5rem;
   line-height: 6rem;
   margin: 3rem 0 2rem;
-  color: $base-font-color;
+  // color: $base-font-color;
   font-weight: $medium-b;
 
   @media #{$mq-xs} {
     font-size: $h1-size;
     line-height: $h1-line-height;
     margin: $h1-margin;
-    color: $h1-color;
+    // color: $h1-color;
     font-weight: $h1-weight;
   }
 }
 
 @mixin h2 {
   margin: $h2-margin;
-  color: $h2-color;
+  // color: $h2-color;
   font-weight: $h2-weight;
   font-family: $h2-family;
   font-size: $h2-size - 0.2;
@@ -104,7 +104,7 @@
 
 @mixin h3 {
   margin: $h3-margin;
-  color: $h3-color;
+  // color: $h3-color;
   font-weight: $h3-weight;
   font-family: $h3-family;
   font-size: $h3-size - 0.2;
@@ -118,7 +118,7 @@
 
 @mixin h4 {
   margin: $h4-margin;
-  color: $h4-color;
+  // color: $h4-color;
   font-weight: $h4-weight;
   font-family: $h4-family;
   font-size: $h4-size - 0.2;
@@ -132,7 +132,7 @@
 
 @mixin h5 {
   margin: $h5-margin;
-  color: $h5-color;
+  // color: $h5-color;
   font-weight: $h5-weight;
   font-family: $h5-family;
   font-size: $h5-size - 0.2;
@@ -146,7 +146,7 @@
 
 @mixin h6 {
   margin: $h6-margin;
-  color: $h6-color;
+  // color: $h6-color;
   font-weight: $h6-weight;
   font-family: $h6-family;
   font-size: $h6-size - 0.2;

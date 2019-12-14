@@ -1,19 +1,22 @@
 <template>
-  <div class="max-pg-width cards">
-    <ul class="unstyle d-flex flex-wrap">
-      <li
+  <v-container grid-list-lg class="cards">
+    <v-layout class="row wrap">
+      <v-flex
         v-for="project in projects"
         :key="project.id"
-        class="col-sm-6 col-lg-4"
+        class="li"
+        xs12
+        sm6
+        lg4
       >
         <v-hover>
           <template v-slot="{ hover }">
             <Project :project="project" :hover="hover"></Project>
           </template>
         </v-hover>
-      </li>
-    </ul>
-  </div>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
@@ -40,7 +43,7 @@ export default {
 .cards {
   width: 100%;
   height: 100%;
-  li {
+  .li {
     .ar .abs-center {
       width: 100%;
       height: 100%;

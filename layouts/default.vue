@@ -1,21 +1,27 @@
 <template lang="pug">
-  v-app
+  v-app.transparent()
     v-navigation-drawer.nav-main.menu--main.unstyle(v-show="!$vuetify.breakpoint.xsOnly" left fixed expand-on-hover :mini-variant.sync="isMini" :mini-variant-width="50" permanent floating)
-      my-menu(type="dropdown" dir="flex-column" :menu="menus.main" :parentState="isMini")
-    v-content.scrolled.fill.wht(:class='scrolled' tag="div")
+      my-menu(type="dropdown" :menu="menus.main" :parentState="isMini")
+        template(v-slot:extra)           
+          v-list-item
+            v-list-item-action()
+              v-switch.px-1.mr-3(v-model="$vuetify.theme.dark")
+            v-list-item-content()
+              v-list-item-title {{$vuetify.theme.dark?'dark':'light'}}
+    v-content.scrolled(:class='scrolled' tag="div")
       nuxt
       transition(name='fade')
-        button#back-to-top.unstyle.back-to-top.flex.center(@click="$vuetify.goTo('#app')" v-if="scrolled != 'top'")
+        button#back-to-top.unstyle.back-to-top.eo-flex.center(@click="$vuetify.goTo('#app')" v-if="scrolled != 'top'")
           span.screen-reader Back to Top
           v-icon(large) expand_less
-    v-footer.white(padless)
+    v-footer(padless)
       v-card.max-pg-width.d-flex.align-center.justify-start.flex-wrap.px-2(tile elevation="0")
         .cell.copy
           sub &copy; 2015-{{ year }}. Made by Erik Olsen
         .cell
-          my-menu.nav-footer.menu--footer.d-flex.justify-start(:menu="menus.footer" :hide-text='true')
-    v-bottom-navigation(color='deep-purple accent-4' fixed bottom v-show="$vuetify.breakpoint.xsOnly")
-      my-menu.nav-main.menu--main.d-flex.justify-start(:menu="menus.main" :hide-text='true')
+          my-menu.nav-footer.menu--footer.d-flex.justify-start(:menu="menus.footer" :hide-text='true' type="flat")
+    v-bottom-navigation(fixed bottom v-show="$vuetify.breakpoint.xsOnly")
+      my-menu.nav-main.menu--main.d-flex.justify-center.full-width(:menu="menus.main" :hide-text='true' type="mobile")
 </template>
 <script>
 import Menu from '../components/Menu.vue'
@@ -43,6 +49,9 @@ export default {
     window.addEventListener('scroll', this.debounce(this.onScroll, 200))
   },
   methods: {
+    changeTheme() {
+      this.$vuetify.theme.dark = !this.$vuetify.theme.dark
+    },
     childRoute(href) {
       return this.$route.path.split('/').includes(href.replace('/', ''))
     },
@@ -81,7 +90,7 @@ export default {
 @import '~/assets/scss/_atomic.scss';
 @import '~/assets/scss/_animations.scss';
 @import '~/assets/scss/_global.scss';
-aside {
+.v-application aside {
   z-index: 220;
   &.v-navigation-drawer {
     &.v-navigation-drawer--fixed {
@@ -126,8 +135,37 @@ aside {
     }
   }
 }
-.v-bottom-navigation .nav-main.menu--main i {
-  font-size: 4.5rem;
+footer.v-footer {
+  &.theme--dark {
+    background-color: #424242;
+  }
+  &.theme--light {
+    background-color: $white;
+  }
+}
+.v-bottom-navigation {
+  .nav-main.menu--main {
+    padding: 0;
+    max-width: 100%;
+    i {
+      font-size: 2.5rem;
+    }
+    .nav-item {
+      flex: 1;
+      padding: 0;
+      max-width: 75px;
+      &.v-list-item--active {
+        i,
+        span {
+          color: $dk-green;
+        }
+      }
+    }
+    button.v-btn {
+      padding: 0;
+      height: 100%;
+    }
+  }
 }
 footer > .v-card {
   width: 100%;
@@ -144,50 +182,6 @@ footer > .v-card {
 .nav-main {
   &.max-pg-width {
     margin: 0 auto;
-  }
-  li {
-    a {
-      text-decoration: none;
-      border-bottom: none;
-      font-family: $fontHead;
-      // font-size: 2.4rem;
-      line-height: 1;
-      @include textLink($link-color-normal, $link-color-active);
-      position: relative;
-      &::after {
-        opacity: 0;
-        transform: translateY(20px);
-        content: '';
-        position: absolute;
-        top: 100%;
-        left: 0;
-        height: 0;
-        width: 0;
-        overflow: hidden;
-        border-bottom: 1px inset $link;
-        transition: opacity $base-duration $base-duration,
-          transform $base-duration $base-duration,
-          border-bottom $base-duration $base-duration;
-      }
-    }
-    &:first-child,
-    &:last-child {
-      // flex: 1;
-    }
-    &:hover,
-    &.active {
-      a {
-        color: $link-color-active;
-        &::after {
-          border-bottom-color: $link-color-active;
-          overflow: visible;
-          width: 100%;
-          height: 2px;
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-    }
   }
 }
 .menu--main {

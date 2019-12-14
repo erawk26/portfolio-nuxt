@@ -90,16 +90,17 @@ $br3: 6px;
 
 $serif-stack: '"Georgia", "Times", "Times New Roman", serif';
 $sans-serif-stack: '"Helvetica Neue", "Helvetica", "Arial", sans-serif';
-$yanone-font: 'Yanone Kaffeesatz', #{$sans-serif-stack};
+$lato-font: 'Lato', #{$sans-serif-stack};
+$unica-font: 'Unica One', #{$sans-serif-stack};
 // $roboto-font: 'Roboto', #{$sans-serif-stack};
 // $monserrat-font: 'Montserrat', #{$sans-serif-stack};
-$libre-font: 'Libre Baskerville', #{$serif-stack};
+// $libre-font: 'Libre Baskerville', #{$serif-stack};
 
 // Base Font
-$heading-font-family: $yanone-font;
+$heading-font-family: $unica-font;
 $heading-alt-family: $heading-font-family;
-$body-font-family: $libre-font;
-$base-font-size:1.8rem;
+$body-font-family: $lato-font;
+$base-font-size:1.6rem;
 $base-line-height:1.3;
 $inherit: inherit;
 

@@ -28,7 +28,7 @@ export default {
       {
         rel: 'stylesheet',
         href:
-          'https://fonts.googleapis.com/css?family=Libre+Baskerville|Yanone+Kaffeesatz|Material+Icons'
+          'https://fonts.googleapis.com/css?family=Lato|Unica+One|Material+Icons'
       }
     ]
   },
