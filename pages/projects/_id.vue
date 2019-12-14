@@ -13,10 +13,9 @@
             v-icon chevron_right
       v-divider
       p {{ project.desc }}
-      ul.eo-flex.wrap.unstyle.skills
-        | Skills:
-        li(v-for="(skill, i) in project.skills" :key="'skill-'+i+1") 
-          span(ripple) {{skill}}
+      .eo-flex.wrap.skills(v-if="project.skills")
+        h6 Skills:
+        v-chip.mr-1(:to="'/projects/tag/'+ machine_readable(skill)" ripple v-for="(skill, i) in project.skills" :key="'skill-'+i+1") {{skill}}
       v-btn.ma-1(outlined small :href="project.links.main.href" :target="project.links.main.target" :title="project.links.main.title")
         v-icon(small) {{project.links.main.icon||'mdi-link'}}
         | {{project.links.main.text||'Visit Site'}}
@@ -73,6 +72,12 @@ export default {
     this.page = Object.keys(this.projects).indexOf(this.$route.params.id) + 1
   },
   methods: {
+    machine_readable: function(str) {
+      return str
+        .toLowerCase()
+        .replace(/[^\w ]+/g, '')
+        .replace(/ +/g, '-')
+    },
     paginationChange(num) {
       this.$router.push({
         path: '/projects/' + Object.keys(this.projects)[num - 1]
@@ -95,9 +100,14 @@ export default {
 }
 </script>
 <style lang="scss">
-.skills li {
-  @include marding(1px, 0);
-  font-size: 0.8em;
+.skills {
+  a {
+    display: block;
+    font-size: 0.8em;
+  }
+  h6 {
+    width: 100%;
+  }
 }
 .project-container {
   .title-wrapper {

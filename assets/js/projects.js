@@ -12,7 +12,7 @@ export default {
         'CMS Structuring',
         'Custom PHP',
         'Custom Drupal Modules',
-        'Google DFP Ads'
+        'Doubleclick for Publishers'
       ],
       desc:
         "This was one of my first builds at Miles Partnership. It's a really clean, interactive, Destination Marketing site built in Drupal 7. We used a lot of custom modules and features and relied heavily on component based CMS building. This project was a ton of fun to help familiarize myself with destination style marketing!"
