@@ -15,7 +15,7 @@
       p {{ project.desc }}
       .eo-flex.wrap.skills(v-if="project.skills")
         h6 Skills:
-        v-chip.mr-1(:to="'/projects/tag/'+ machine_readable(skill)" ripple v-for="(skill, i) in project.skills" :key="'skill-'+i+1") {{skill}}
+        v-chip.mr-1.mb-1(:to="'/projects/tag/'+ machine_readable(skill)" ripple v-for="(skill, i) in project.skills" :key="'skill-'+i+1") {{skill}}
       v-btn.ma-1(outlined small :href="project.links.main.href" :target="project.links.main.target" :title="project.links.main.title")
         v-icon(small) {{project.links.main.icon||'mdi-link'}}
         | {{project.links.main.text||'Visit Site'}}

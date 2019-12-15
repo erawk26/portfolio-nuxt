@@ -1,5 +1,6 @@
 <template>
   <v-container grid-list-lg class="cards">
+    <h3>{{ human_readable($route.params.skill) }}</h3>
     <v-layout class="row wrap">
       <v-flex
         v-for="project in filtered"
@@ -53,6 +54,12 @@ export default {
         .toLowerCase()
         .replace(/[^\w ]+/g, '')
         .replace(/ +/g, '-')
+    },
+    human_readable: function() {
+      const skill = this.skills.filter(
+        (skill) => this.machine_readable(skill) === this.$route.params.skill
+      )
+      return skill.length ? skill[0] : null
     }
   }
 }
