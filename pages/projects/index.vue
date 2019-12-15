@@ -50,8 +50,12 @@ export default {
     }
   }
   .flip-card {
-    .headline {
+    h1,
+    h2,
+    h3,
+    h4 {
       font-size: 2.2rem;
+      font-weight: $h2-weight;
       margin: 0;
       line-height: 1.2;
     }

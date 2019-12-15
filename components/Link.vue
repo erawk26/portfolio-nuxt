@@ -1,7 +1,7 @@
 <template lang="pug">
   a(:href="href" :target="target" :title="title")
     v-icon.link-icon(aria-hidden="true") {{icon}}
-    | {{ text }}
+    span(:class="{'screen-reader':hideText}") {{ text }}
 </template>
 <script>
 export default {
@@ -22,6 +22,10 @@ export default {
     title: {
       type: String,
       default: ''
+    },
+    hideText: {
+      type: Boolean,
+      default: false
     },
     text: {
       type: String,

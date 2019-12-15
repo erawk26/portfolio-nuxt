@@ -32,6 +32,11 @@ body {
 }
 #__layout .wrapper {
   min-height: calc(100vh - 100px);
+  max-width: calc(100% - 55px);
+  margin: 0 auto;
+  @media (max-width:599px) {
+    max-width: 100%;
+  }
 } // @TODO remove after done DEV DEBUGGING
 a,
 a:visited {

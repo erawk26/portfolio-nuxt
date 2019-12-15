@@ -7,22 +7,21 @@
       v-card
         v-img(:src="require('~/assets/img/'+project.img)" aspect-ratio="1.77" :title="project.title" :alt="project.title")
       .title-wrapper.d-flex.align-end.justify-space-between
-        h1.display-2 {{ project.title }}
+        .cell.eo-flex.a-end
+          h1.display-2 {{ project.title }}
+          Link.ml-2(:text="project.links.main.text" :icon="project.links.main.icon||'mdi-link'" :href="project.links.main.href" :target="project.links.main.target" :title="project.links.main.title||'Visit Site'" hideText)
+          template(v-if="project.links.other" v-for="otherLink in project.links.other" )
+            Link.ml-2(:text="otherLink.text" :icon="otherLink.icon||'mdi-link'" :href="otherLink.href" :target="otherLink.target" :title="otherLink.title" hideText)
         small.counter.flex-shrink-0 {{keys.indexOf(project.id) + 1}} / {{keys.length}}
           nuxt-link(:to="looper(1)")
             v-icon chevron_right
       v-divider
-      p {{ project.desc }}
-      .eo-flex.wrap.skills(v-if="project.skills")
-        h6 Skills:
-        v-chip.mr-1.mb-1(:to="'/projects/tag/'+ machine_readable(skill)" ripple v-for="(skill, i) in project.skills" :key="'skill-'+i+1") {{skill}}
-      v-btn.ma-1(outlined small :href="project.links.main.href" :target="project.links.main.target" :title="project.links.main.title")
-        v-icon(small) {{project.links.main.icon||'mdi-link'}}
-        | {{project.links.main.text||'Visit Site'}}
-      template(v-if="project.links.other" v-for="otherLink in project.links.other" )
-        v-btn.ma-1(outlined small :href="otherLink.href" :target="otherLink.target" :title="otherLink.title")
-          v-icon(small) {{otherLink.icon||'mdi-link'}}
-          | {{otherLink.text||'Visit Site'}}
+      .eo-flex.wrap.j-center.a-start
+        .cell.alpha.mt-2
+          p.mt-0 {{ project.desc }}
+        .cell.omega.eo-flex.wrap.skills.mt-2(v-if="project.skills")
+          small.full-width Skills:
+          v-chip.mr-1.mb-1(small :to="'/projects/tag/'+ machine_readable(skill)" ripple v-for="(skill, i) in project.skills" :key="'skill-'+i+1") {{skill}}
     .text-center
       v-pagination(@input="paginationChange" v-model='page' total-visible="5" :length='keys.length' circle)  
 </template>
@@ -126,10 +125,15 @@ export default {
   }
   // @include set-max-width;
   .cell {
-    padding: 5px;
+    // padding: 5px;
   }
   .alpha {
     flex: 2;
+    margin-right: 2rem;
+    @media (max-width: 599px) {
+      min-width: 100%;
+      margin-right: 0;
+    }
   }
   .omega {
     flex: 1;

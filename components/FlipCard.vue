@@ -4,10 +4,10 @@
       v-card.card-front.abs-center.eo-flex.col.center(ripple :elevation="hover?5:10")
         v-img.img.flex-grow(:src="require('~/assets/img/'+project.img)")
         .content.left-text
-          h3.headline.uc {{project.title}}
+          h4.uc {{project.title}}
       v-card.card-back.abs-center(ripple :elevation="hover?5:10")
         .content.eo-flex.col.a-center.j-start.fill.dk-green.center-text
-          h4.headline.uc.color.wht.text-shadow {{project.title}}
+          h4.uc {{project.title}}
           ul.eo-flex.center.wrap.unstyle.cell.omega
             li.skill(v-for="(skill, i) in project.skills")
               v-chip.ma-1(color="charcoal" text-color="white") {{skill}}

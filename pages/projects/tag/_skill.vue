@@ -1,6 +1,8 @@
 <template>
   <v-container grid-list-lg class="cards">
-    <h3>{{ human_readable($route.params.skill) }}</h3>
+    <v-layout class="row">
+      <h3>{{ human_readable($route.params.skill) }}</h3>
+    </v-layout>
     <v-layout class="row wrap">
       <v-flex
         v-for="project in filtered"
@@ -65,4 +67,8 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+h3 {
+  font-weight: $h2-weight;
+}
+</style>
