@@ -35,7 +35,7 @@ export default {
 }
 </script>
 <style>
-.link-icon {
-  padding-right: 0.3em;
+.mdi-link {
+  transform: translateY(-2px) rotate(-45deg);
 }
 </style>
