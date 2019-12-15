@@ -54,7 +54,7 @@ export default {
     '@nuxtjs/style-resources'
   ],
   googleAnalytics: {
-    id: 'UA-115116018-1'
+    id: 'G-7T0JLV856W'
   },
   styleResources: {
     // your settings here
