@@ -1,22 +1,10 @@
-<template>
-  <v-container grid-list-lg class="cards">
-    <v-layout class="row wrap">
-      <v-flex
-        v-for="project in projects"
-        :key="project.id"
-        class="li"
-        xs12
-        sm6
-        lg4
-      >
-        <v-hover>
-          <template v-slot="{ hover }">
-            <Project :project="project" :hover="hover"></Project>
-          </template>
-        </v-hover>
-      </v-flex>
-    </v-layout>
-  </v-container>
+<template lang="pug">
+  v-container.cards(grid-list-lg='')
+    v-layout.row.wrap
+      v-flex.li(v-for='project in projects' :key='project.id' xs12='' sm6='' lg4='')
+        v-hover
+          template(v-slot='{ hover }')
+            project(:project='project' :hover='hover')
 </template>
 
 <script>
